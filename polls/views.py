@@ -6,6 +6,7 @@ from . import reddit
 from . import my_html
 from . import wordle_alpha
 from . import bootstrap
+from . import four_chan
 # import re
 # from . import css
 import sys
@@ -70,3 +71,26 @@ def kevin_bacon(request):
     html = requests.get('https://en.wikipedia.org/wiki/Kevin_Bacon').text
     html = html.replace(html, my_html.k)
     return HttpResponse(html)
+
+def chan4(request):
+    html = requests.get('https://boards.4channel.org/g/thread/87761950').text
+    return HttpResponse(four_chan.html)
+
+def chan4_b(request):
+    return HttpResponse(four_chan.html)
+
+def chan4_v(request):
+    return HttpResponse(requests.get('https://boards.4channel.org/v/').text)
+
+def chan4_biz(request):
+    return HttpResponse(requests.get('https://boards.4channel.org/biz/').text)
+
+def chan4_x(request):
+    return HttpResponse(requests.get('https://boards.4channel.org/x/').text)
+
+def chan4_sci(request):
+    return HttpResponse(requests.get('https://boards.4channel.org/sci/').text)
+
+
+def chan4_xs(request):
+    return HttpResponse(requests.get('https://boards.4channel.org/xs/').text)
