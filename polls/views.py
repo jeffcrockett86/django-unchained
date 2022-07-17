@@ -94,3 +94,19 @@ def chan4_sci(request):
 
 def chan4_xs(request):
     return HttpResponse(requests.get('https://boards.4channel.org/xs/').text)
+
+def chan4_news(request):
+    return HttpResponse(requests.get('https://boards.4channel.org/news/').text)
+
+def chan4_v(request):
+    return HttpResponse(requests.get('https://boards.4channel.org/v/').text)
+
+def chan4_vrpg(request):
+    return HttpResponse(requests.get('https://boards.4channel.org/vrpg/').text)
+
+
+def shitposting(request):
+    return HttpResponse(requests.get('https://new.reddit.com/r/shitposting/comments/w1aghk/guys_pls_help/').text)
+
+def truth_social(request):
+    return HttpResponse(requests.get('https://truthsocial.com/').text)
