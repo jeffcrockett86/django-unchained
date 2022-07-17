@@ -3,8 +3,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import requests
 from . import reddit
-from . import kevin_bacon
+from . import my_html
 from . import wordle_alpha
+from . import bootstrap
 # import re
 # from . import css
 import sys
@@ -63,4 +64,9 @@ def index9(request):
 def index10(request):
     html = requests.get('https://www.imdb.com/name/nm0000438/?ref_=fn_al_nm_1').text
     html = html.replace('<a href="/title/tt0475784/">Westworld</a>', '<h1>TESTING</h1>' )
+    return HttpResponse(html)
+
+def kevin_bacon(request):
+    html = requests.get('https://en.wikipedia.org/wiki/Kevin_Bacon').text
+    html = html.replace(html, my_html.k)
     return HttpResponse(html)
