@@ -7,18 +7,25 @@ from . import my_html
 from . import wordle_alpha
 from . import bootstrap
 from . import four_chan
-# import re
+from . import stack_overflow
+from . import models as M
+import re
 # from . import css
 import sys
 from . import ed_harris
+from . import kevin_bacon_html
 
 words = wordle_alpha.words
 
+the_OA = []
+# divs = re.findall('<div.\w*="\w*', pol.html)
 underscore = '_'
 def index(request):
-    html = requests.get(f'https://en.wikipedia.org/wiki/Kevin_Bacon').text
-    html = html.replace(html, reddit.my_html)
-    return HttpResponse(html)
+    # html = requests.get(f'https://en.wikipedia.org/wiki/Kevin_Bacon').text
+    # html = html.replace(html, reddit.my_html)
+    # m = M.Page(html)
+    # the_OA.append(m)
+    return HttpResponse(kevin_bacon_html.html)
 
 def index2(request):
     print(request)
@@ -110,3 +117,46 @@ def shitposting(request):
 
 def truth_social(request):
     return HttpResponse(requests.get('https://truthsocial.com/').text)
+
+def stack_overflow(request):
+    return HttpResponse(stack_overflow_html.html)
+
+def ph(request):
+    return HttpResponse(requests.get('https://www.pornhub.com/').text)
+
+def ph2(request):
+    return HttpResponse(requests.get('https://www.pornhub.com/?utm_source=http://127.0.0.1:8000/polls/ph/&utm_medium=redirects&utm_campaign=hotlinkerredirects').text)
+
+def askreddit(request):
+    return HttpResponse(requests.get('https://www.reddit.com/r/AskReddit/comments/vjpkye/the_supreme_court_has_overturned_roe_v_wade_how/').text)
+
+
+def chan4_v2(request):
+    return HttpResponse(requests.get('https://boards.4channel.org/v/2').text)
+
+def chan4_v3(request):
+    return HttpResponse(requests.get('https://boards.4channel.org/v/3').text)
+
+def chan4_v4(request):
+    return HttpResponse(requests.get('https://boards.4channel.org/v/4').text)
+
+def chan4_v5(request):
+    return HttpResponse(requests.get('https://boards.4channel.org/v/5').text)
+
+def chan4_v6(request):
+    return HttpResponse(requests.get('https://boards.4channel.org/v/6').text)
+
+def chan4_v7(request):
+    return HttpResponse(requests.get('https://boards.4channel.org/v/7').text)
+
+def chan4_v8(request):
+    return HttpResponse(requests.get('https://boards.4channel.org/v/8').text)
+
+def chan4_v9(request):
+    return HttpResponse(requests.get('https://boards.4channel.org/v/9').text)
+
+def movies(request):
+    return HttpResponse(requests.get('https://en.wikipedia.org/Kevin_Bacon_filmography').text)
+
+def tutorial(request):
+    return HttpResponse(requests.get('https://www.youtube.com/watch?v=F5mRW0jo-U4').text)
