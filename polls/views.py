@@ -14,6 +14,9 @@ import re
 import sys
 from . import ed_harris
 from . import kevin_bacon_html
+from . import models 
+from random import randint as ri 
+# from models import Post
 
 words = wordle_alpha.words
 
@@ -25,8 +28,26 @@ def index(request):
     # html = html.replace(html, reddit.my_html)
     # m = M.Page(html)
     # the_OA.append(m)
-    return HttpResponse(kevin_bacon_html.html)
+    # return HttpResponse(html)
+    x = list(models.Post.objects.all())
+    string = f'''
+    <div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown"><li>
+    ''' + x[ri(0,len(x))].content + '</li></ul></div>'
 
+    
+    
+    
+    # <li><a class="dropdown-item" href="#">Dropdown item</a></li>
+    # <li><a class="dropdown-item" href="#">Dropdown item</a></li>
+    # <li><a class="dropdown-item" href="#">Dropdown item</a></li>
+
+   
+    # return HttpResponse('<h1>' + x[ri(0,len(x))].content + '</h1>')
+    return HttpResponse(string)
 def index2(request):
     print(request)
     return HttpResponse(['<h1>' + word + '</h1>' for word in words])
