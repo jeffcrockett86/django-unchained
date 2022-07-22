@@ -4,31 +4,39 @@ from random import randint as ri
 class Word:
     def __init__(self, spelling='', pos=''):
         self.spelling = spelling 
-        self.pos = pos    
+            
 
 class Noun: 
     def __init__(self, spelling='', pos=''):
-        self.head = 'NOUN'
+        self.pos = 'NOUN'
         self.spelling = spelling 
-        self.pos = pos
+        
 
 class Verb: 
     def __init__(self, spelling='', pos=''):
-        self.head = 'VERB'
+        self.pos = 'VERB'
         self.spelling = spelling 
-        self.pos = pos
+        
 
 class Adjective: 
     def __init__(self, spelling='', pos=''):
-        self.head = 'ADJECTIVE'
+        self.pos = 'ADJECTIVE'
         self.spelling = spelling 
-        self.pos = pos
+        
 
 class Article: 
     def __init__(self, spelling='', pos=''):
-        self.head = 'ARTICLE'
+        self.pos = 'ARTICLE'
         self.spelling = spelling 
-        self.pos = pos
+        
+
+class Preposition:
+    def __init__(self, spelling='', pos=''):
+        self.pos = 'PREPOSITION'
+        self.spelling = spelling 
+        
+
+
 
 
     

@@ -1,3 +1,4 @@
+nltk_words = '''
 Confidence NN B-NP
 in IN B-PP
 the DT B-NP
@@ -220660,4 +220661,4 @@ San NNP B-NP
 Francisco NNP I-NP
 instead RB B-ADVP
 . . O
-
+'''

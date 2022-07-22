@@ -1,13 +1,38 @@
-from . import script as script
-# from script import Noun
-# from script import Verb
-# from script import Adjective 
-# from script import Article 
+from random import randint as ri 
+from . import nltk_words as nltk_words
+class Word:
+    def __init__(self, spelling='', pos=''):
+        self.spelling = spelling 
+            
 
-the = script.Article("the")
-big = script.Adjective("big")
-dog = script.Noun("dog")
-runs = script.Verb("runs") 
+class Noun: 
+    def __init__(self, spelling='', pos=''):
+        self.pos = 'NOUN'
+        self.spelling = spelling 
+        
+
+class Verb: 
+    def __init__(self, spelling='', pos=''):
+        self.pos = 'VERB'
+        self.spelling = spelling 
+        
+
+class Adjective: 
+    def __init__(self, spelling='', pos=''):
+        self.pos = 'ADJECTIVE'
+        self.spelling = spelling 
+        
+
+class Article: 
+    def __init__(self, spelling='', pos=''):
+        self.pos = 'ARTICLE'
+        self.spelling = spelling 
+        
+
+class Preposition:
+    def __init__(self, spelling='', pos=''):
+        self.pos = 'PREPOSITION'
+        self.spelling = spelling 
 
 class NounPhrase:  
     def __init__(self, *args):
@@ -55,21 +80,21 @@ class Sentence:
 
 
 
-ap = AdjectivePhrase(script.Adjective("big"), script.Noun("dog"))
+ap = AdjectivePhrase(Adjective("big"), Noun("dog"))
 
-ap = ArticlePhrase(script.Article("the"), ap)
+ap = ArticlePhrase(Article("the"), ap)
 
-lst = [script.Article("The"), script.Adjective("red"), script.Noun("ball")]
+lst = [Article("The"), Adjective("red"), Noun("ball")]
 # lst
-# [<script.Article object at 0x10646eb30>, <script.Adjective object at 0x10a017970>, <script.Noun object at 0x10a017f10>]
-the_red_ball = ArticlePhrase(script.Article("The"), AdjectivePhrase(script.Adjective("red"), script.Noun("ball")))
-# <script.Article object at 0x10a017700>
-# <script.Adjective object at 0x10a017dc0>
-# <script.Noun object at 0x10a017fa0>
+# [<Article object at 0x10646eb30>, <Adjective object at 0x10a017970>, <Noun object at 0x10a017f10>]
+the_red_ball = ArticlePhrase(Article("The"), AdjectivePhrase(Adjective("red"), Noun("ball")))
+# <Article object at 0x10a017700>
+# <Adjective object at 0x10a017dc0>
+# <Noun object at 0x10a017fa0>
 # the_red_ball
 # <output_file.ArticlePhrase object at 0x10a017d90>
-_is = script.Verb("is")
-blue = script.Adjective("blue")
+_is = Verb("is")
+blue = Adjective("blue")
 
 _is_blue = VerbPhrase(_is, blue)
 
@@ -77,30 +102,75 @@ the_red_ball_is_blue = Sentence(the_red_ball, _is_blue)
 
 print(the_red_ball_is_blue)
 
-NP = NounPhrase
-AdjP = AdjectivePhrase
-ArtP = ArticlePhrase
-S = Sentence
-VP = VerbPhrase
-N = script.Noun
-V = script.Verb
-Adj = script.Adjective
-Art = script.Article
+# NP = NounPhrase
+# AdjP = AdjectivePhrase
+# ArtP = ArticlePhrase
+# S = Sentence
+# VP = VerbPhrase
+# N = Noun
+# V = Verb
+# Adj = Adjective
+# Art = Article
+# PP = PrepositionPhrase
 
-s = Sentence(AdjectivePhrase(script.Adjective('little'), NounPhrase(script.Noun('dog')), VerbPhrase(script.Verb('runs'))))
+s = Sentence(Article('the'), AdjectivePhrase(Adjective('little'), NounPhrase(Noun('dog')), VerbPhrase(Verb('runs'))))
+
+
+
+
+lines = nltk_words.nltk_words.split('\n')
+
+d = {
+  'nouns': [],
+  'verbs': [],
+  'adjectives': [],
+  'articles': [],
+  'prepositions': [],
+}
+
+for line in lines:
+  if ' NN' in line:
+    d['nouns'].append(Noun(line.split()[0]))
+  if ' VBZ' in line:
+    d['verbs'].append(Verb(line.split()[0]))
+  if ' JJ' in line:
+    d['adjectives'].append(Adjective(line.split()[0]))
+  if ' IN' in line:
+    d['prepositions'].append(Preposition(line.split()[0]))
+  if ' DT' in line and ' + ' not in line:
+    d['articles'].append(Article(line.split()[0]))
+  
+
+rand_noun = d['nouns'][ri(0, len(d['nouns']))]
+rand_noun2 = d['nouns'][ri(0, len(d['nouns']))]
+
+rand_adj = d['adjectives'][ri(0, len(d['adjectives']))]
+rand_adj2 = d['adjectives'][ri(0, len(d['adjectives']))]
+
+rand_verb = d['verbs'][ri(0, len(d['verbs']))]
+rand_verb2 = d['verbs'][ri(0, len(d['verbs']))]
+
+rand_prep = d['prepositions'][ri(0, len(d['prepositions']))]
+rand_prep2 = d['prepositions'][ri(0, len(d['prepositions']))]
+
+rand_art = d['articles'][ri(0, len(d['articles']))]
+rand_art2 = d['articles'][ri(0, len(d['articles']))]
+
+
+html = f'<h1>{rand_art.spelling} {rand_adj.spelling} {rand_noun.spelling} {rand_verb.spelling} {rand_prep.spelling} {rand_art2.spelling} {rand_adj2.spelling} {rand_noun2.spelling}</h1>'
 """
 from output_file import *
 Currently feeding Lassie
-<script.Adjective object at 0x10a017310>
-<script.Noun object at 0x10a017370>
-<script.Article object at 0x10a017430>
+<Adjective object at 0x10a017310>
+<Noun object at 0x10a017370>
+<Article object at 0x10a017430>
 <output_file.AdjPhrase object at 0x10a0173d0>
 ap
 <output_file.ArticlePhrase object at 0x10a017490>
 ap.children
-(<script.Article object at 0x10a017430>, <output_file.AdjPhrase object at 0x10a0173d0>)
+(<Article object at 0x10a017430>, <output_file.AdjPhrase object at 0x10a0173d0>)
 ap.children[0]
-<script.Article object at 0x10a017430>
+<Article object at 0x10a017430>
 ap.children[0].spelling
 'the'
 the = ap.children[0]
@@ -108,16 +178,16 @@ the = the.spelling
 the
 'the'
 ap = AdjPhrase(Adjective("big"), Noun("dog"))
-<script.Adjective object at 0x10646e0b0>
-<script.Noun object at 0x10a017880>
+<Adjective object at 0x10646e0b0>
+<Noun object at 0x10a017880>
 ap.children
-(<script.Adjective object at 0x10646e0b0>, <script.Noun object at 0x10a017880>)
+(<Adjective object at 0x10646e0b0>, <Noun object at 0x10a017880>)
 big = ap.children[0].spelling
 big = ap.children[1].spelling
 big = ap.children[0]
 dog = ap.children[1]
 dog
-<script.Noun object at 0x10a017880>
+<Noun object at 0x10a017880>
 the_big_dog
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -127,10 +197,10 @@ Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 NameError: name 'big_dog' is not defined
 big_dog = AdjPhrase(big, dog)
-<script.Adjective object at 0x10646e0b0>
-<script.Noun object at 0x10a017880>
+<Adjective object at 0x10646e0b0>
+<Noun object at 0x10a017880>
 the_big_dog = ArticlePhrase(Article("the"), big_dog)
-<script.Article object at 0x10a017a90>
+<Article object at 0x10a017a90>
 <output_file.AdjPhrase object at 0x10a017a00>
 
 
@@ -142,7 +212,7 @@ the_big_dog_runs = Sentence(the_big_dog, VerbPhrase("runs"))
 runs
 the_big_dog_runs
 <__main__.Sentence object at 0x10a017d00>
-the_big_dog_runscript.children
+the_big_dog_runchildren
 (<output_file.ArticlePhrase object at 0x10a017670>, <output_file.VerbPhrase object at 0x10a017ca0>)
 
             
@@ -159,9 +229,9 @@ SyntaxError: unmatched ')'
  ap
 <__main__.ArticlePhrase object at 0x113d1b820>
  ap.children
-(<script.Article object at 0x1101720b0>, <output_file.NounPhrase object at 0x113d1b340>)
+(<Article object at 0x1101720b0>, <output_file.NounPhrase object at 0x113d1b340>)
  ap.children[0]
-<script.Article object at 0x1101720b0>
+<Article object at 0x1101720b0>
  ap.children[1]
 <output_file.NounPhrase object at 0x113d1b340>
  ap.children[1].spelliung
@@ -183,9 +253,9 @@ Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 AttributeError: 'NounPhrase' object has no attribute 'pos'
 ap.children[1].children
-(<script.Adjective object at 0x113d1a830>, <script.Noun object at 0x113d1b2e0>)
+(<Adjective object at 0x113d1a830>, <Noun object at 0x113d1b2e0>)
 ap.children[1].children[1]
-<script.Noun object at 0x113d1b2e0>
+<Noun object at 0x113d1b2e0>
 ap.children[1].children[1].spelling
 'dog
 ap.children[1].children[1].pos
@@ -204,9 +274,9 @@ S
 ap
 <__main__.ArticlePhrase object at 0x113d1b820>
 ap.children
-(<script.Article object at 0x1101720b0>, <output_file.NounPhrase object at 0x113d1b340>)
+(<Article object at 0x1101720b0>, <output_file.NounPhrase object at 0x113d1b340>)
 ap.children[0]
-<script.Article object at 0x1101720b0>
+<Article object at 0x1101720b0>
 ap.children[1]
 <output_file.NounPhrase object at 0x113d1b340>
 ap.children[1].spelliung
@@ -228,9 +298,9 @@ Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 AttributeError: 'NounPhrase' object has no attribute 'pos'
 ap.children[1].children
-(<script.Adjective object at 0x113d1a830>, <script.Noun object at 0x113d1b2e0>)
+(<Adjective object at 0x113d1a830>, <Noun object at 0x113d1b2e0>)
 ap.children[1].children[1]
-<script.Noun object at 0x113d1b2e0>
+<Noun object at 0x113d1b2e0>
 ap.children[1].children[1].spelling
 'dog'
 ap.children[1].children[1].pos
@@ -238,7 +308,7 @@ ap.children[1].children[1].pos
 the_big_dog = ap
 the_big_dog.the = ap.children[0]
 the_big_dog.the
-<script.Article object at 0x1101720b0>
+<Article object at 0x1101720b0>
 the_big_dog.the
 
 
@@ -248,17 +318,17 @@ the_big_dog.dog = Noun("dog")
 the_big_dog
 <__main__.ArticlePhrase object at 0x113d1b820>
 the_big_dog.the
-<script.Article object at 0x1101720b0>
+<Article object at 0x1101720b0>
 the_big_dog.big
-<script.Adjective object at 0x113d1a830>
+<Adjective object at 0x113d1a830>
 dog
-<script.Noun object at 0x110353b50>
+<Noun object at 0x110353b50>
 ap
 <__main__.ArticlePhrase object at 0x113d1b820>
 ap.children
-(<script.Article object at 0x1101720b0>, <output_file.NounPhrase object at 0x113d1b340>)
+(<Article object at 0x1101720b0>, <output_file.NounPhrase object at 0x113d1b340>)
 the_big_dog.children
-(<script.Article object at 0x1101720b0>, <output_file.NounPhrase object at 0x113d1b340>)
+(<Article object at 0x1101720b0>, <output_file.NounPhrase object at 0x113d1b340>)
 type(the_big_dog.children)
 <class 'tuple'>
 
