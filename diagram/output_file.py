@@ -1,12 +1,13 @@
-from script import Noun
-from script import Verb
-from script import Adjective 
-from script import Article 
+from . import script as s
+# from script import Noun
+# from script import Verb
+# from script import Adjective 
+# from script import Article 
 
-the = Article("the")
-big = Adjective("big")
-dog = Noun("dog")
-runs = Verb("runs") 
+the = s.Article("the")
+big = s.Adjective("big")
+dog = s.Noun("dog")
+runs = s.Verb("runs") 
 
 class NounPhrase:  
     def __init__(self, *args):
@@ -49,21 +50,21 @@ class Sentence:
 
 
 
-ap = AdjPhrase(Adjective("big"), Noun("dog"))
+ap = AdjPhrase(s.Adjective("big"), s.Noun("dog"))
 
-ap = ArticlePhrase(Article("the"), ap)
+ap = ArticlePhrase(s.Article("the"), ap)
 
-lst = [Article("The"), Adjective("red"), Noun("ball")]
+lst = [s.Article("The"), s.Adjective("red"), s.Noun("ball")]
 # lst
 # [<script.Article object at 0x10646eb30>, <script.Adjective object at 0x10a017970>, <script.Noun object at 0x10a017f10>]
-the_red_ball = ArticlePhrase(Article("The"), Adjective("red"), Noun("ball"))
+the_red_ball = ArticlePhrase(s.Article("The"), s.Adjective("red"), s.Noun("ball"))
 # <script.Article object at 0x10a017700>
 # <script.Adjective object at 0x10a017dc0>
 # <script.Noun object at 0x10a017fa0>
 # the_red_ball
 # <output_file.ArticlePhrase object at 0x10a017d90>
-_is = Verb("is")
-blue = Adjective("blue")
+_is = s.Verb("is")
+blue = s.Adjective("blue")
 
 _is_blue = VerbPhrase(_is, blue)
 
@@ -76,10 +77,10 @@ AdjP = AdjPhrase
 ArtP = ArticlePhrase
 S = Sentence
 VP = VerbPhrase
-N = Noun
-V = Verb
-Adj = Adjective
-Art = Article
+N = s.Noun
+V = s.Verb
+Adj = s.Adjective
+Art = s.Article
 
 
 """
