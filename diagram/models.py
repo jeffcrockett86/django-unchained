@@ -1,10 +1,75 @@
 from django.db import models
 from random import randint as ri 
 from . import nltk_words as nltk_words
+
+class W(models.Model):
+  spelling = models.CharField(max_length=100, default="spelling")
+  pos = models.CharField(max_length=5, default="part of speech")
+  def __init__(self, spelling = spelling, pos = pos):
+    self.spelling = spelling 
+    self.pos = pos 
+    self.children = []
+
+class N(models.Model):
+  spelling = models.CharField(max_length = 100, default="spelling")
+  pos = models.CharField(max_length=5, default="part of speech")
+  def __init__(self, spelling, pos):
+    self.spelling = spelling 
+    self.pos = pos 
+    self.children = []
+    
+
+class V(models.Model):
+  spelling = models.CharField(max_length = 100)
+  pos = models.CharField(max_length=5)
+  def __init__(self, spelling=spelling, pos = pos):
+    self.spelling = spelling 
+    self.pos = pos   
+    self.children = []
+    
+
+class Adj(models.Model):
+  spelling = models.CharField(max_length = 100)
+  pos = models.CharField(max_length=5)
+  def __init__(self, spelling=spelling, pos = pos):
+    self.spelling = spelling 
+    self.pos = pos 
+    self.children = []
+    
+
+class Art(models.Model):
+  spelling = models.CharField(max_length = 100)
+  pos = models.CharField(max_length=5)
+  def __init__(self, spelling=spelling, pos = pos):
+    self.spelling = spelling 
+    self.pos = pos 
+    self.children = []
+    
+
+class Adv(models.Model):
+  spelling = models.CharField(max_length = 100)
+  pos = models.CharField(max_length=5)
+  def __init__(self, spelling=spelling, pos = pos):
+    self.spelling = spelling 
+    self.pos = pos 
+    self.children = []
+
+class Prep(models.Model):
+  spelling = models.CharField(max_length = 100)
+  pos = models.CharField(max_length=5)
+  def __init__(self, spelling=spelling, pos = pos):
+    self.spelling = spelling 
+    self.pos = pos   
+    self.children = []
+    
+
+
 class Word:
     def __init__(self, spelling='', pos=''):
         self.spelling = spelling 
         self.children = None
+        self.children = []
+    
 
 class Noun: 
     def __init__(self, spelling='', pos=''):
@@ -124,25 +189,25 @@ the_red_ball_is_blue = Sentence(the_red_ball, _is_blue)
 
 print(the_red_ball_is_blue)
 
-NP = NounPhrase
-AdjP = AdjectivePhrase
-ArtP = ArticlePhrase
-S = Sentence
-VP = VerbPhrase
-N = Noun
-V = Verb
-Adj = Adjective
-Art = Article
-PP = PrepositionPhrase
+# NP = NounPhrase
+# AdjP = AdjectivePhrase
+# ArtP = ArticlePhrase
+# S = Sentence
+# VP = VerbPhrase
+# N = Noun
+# V = Verb
+# Adj = Adjective
+# Art = Article
+# PP = PrepositionPhrase
 
-s = Sentence(Article('the'), AdjectivePhrase(Adjective('little'), NounPhrase(Noun('dog')), VerbPhrase(Verb('runs'))))
-cat = N('cat')
+# s = Sentence(Article('the'), AdjectivePhrase(Adjective('little'), NounPhrase(Noun('dog')), VerbPhrase(Verb('runs'))))
+# cat = N('cat')
 
-try:
-   if cat.children:
-     print('cat has children')
-except AttributeError:
-     print('cat has no children')
+# try:
+#    if cat.children:
+#      print('cat has children')
+# except AttributeError:
+#      print('cat has no children')
 
 # b = open('bible.txt', 'r')
 # b_lines = b.readlines()
@@ -196,9 +261,8 @@ sorted_verbs = sorted([verb.spelling for verb in d['verbs']])
 sorted_adjectives = sorted([adj.spelling for adj in d['adjectives']])
 sorted_prepositions = sorted([prep.spelling for prep in d['prepositions']])
 
-class N(models.Model):
-  spelling = models.CharField(max_length = 100)
-  pos = models.CharField(max_length=5)
+
+
 # print(f'{rand_art.spelling} {rand_adj.spelling} {rand_noun.spelling} {rand_verb.spelling} {rand_prep.spelling} {rand_art2.spelling} {rand_adj2.spelling} {rand_noun2.spelling}')
 """
 from output_file import *
