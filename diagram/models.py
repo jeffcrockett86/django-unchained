@@ -1,66 +1,95 @@
 from django.db import models
 from random import randint as ri 
-from . import nltk_words as nltk_words
+from . import nltk_words
+from . import bible
+from . import quran 
+
+
+def unpack(sentence, div_count=0):
+  for child in sentence.children:
+    print('sentence.children is', sentence.children)
+    if not sentence.children:
+      return '<div>' + sentence.spelling + '</div>'
+ 
+    # return '<div>' + unpack(child, div_count + 1)
+    return unpack(child)
+
+def rand(lst):
+  return lst[ri(0, len(lst))]
+
+# def get_leaf_nodes(self):
+#     leafs = []
+#     def _get_leaf_nodes( node):
+#         if node is not None:
+#             if len(node.children) == 0:
+#                 leafs.append(node)
+#             for n in node.children:
+#                 _get_leaf_nodes(n)
+#     _get_leaf_nodes(self.root)
+#     return leafs
+  
+  
+  # return unpack(sentence.children, div_count + 1)
 
 class W(models.Model):
   spelling = models.CharField(max_length=100, default="spelling")
   pos = models.CharField(max_length=5, default="part of speech")
-  def __init__(self, spelling = spelling, pos = pos):
-    self.spelling = spelling 
-    self.pos = pos 
-    self.children = []
+  # def __init__(self, spelling = spelling, pos = pos):
+  #   self.spelling = spelling 
+  #   self.pos = pos 
+  #   self.children = []
 
 class N(models.Model):
   spelling = models.CharField(max_length = 100, default="spelling")
   pos = models.CharField(max_length=5, default="part of speech")
-  def __init__(self, spelling, pos):
-    self.spelling = spelling 
-    self.pos = pos 
-    self.children = []
+  # def __init__(self, spelling, pos):
+  #   self.spelling = spelling 
+  #   self.pos = pos 
+  #   self.children = []
     
 
 class V(models.Model):
   spelling = models.CharField(max_length = 100)
   pos = models.CharField(max_length=5)
-  def __init__(self, spelling=spelling, pos = pos):
-    self.spelling = spelling 
-    self.pos = pos   
-    self.children = []
+  # def __init__(self, spelling=spelling, pos = pos):
+  #   self.spelling = spelling 
+  #   self.pos = pos   
+  #   self.children = []
     
 
 class Adj(models.Model):
   spelling = models.CharField(max_length = 100)
   pos = models.CharField(max_length=5)
-  def __init__(self, spelling=spelling, pos = pos):
-    self.spelling = spelling 
-    self.pos = pos 
-    self.children = []
+  # def __init__(self, spelling=spelling, pos = pos):
+  #   self.spelling = spelling 
+  #   self.pos = pos 
+  #   self.children = []
     
 
 class Art(models.Model):
   spelling = models.CharField(max_length = 100)
   pos = models.CharField(max_length=5)
-  def __init__(self, spelling=spelling, pos = pos):
-    self.spelling = spelling 
-    self.pos = pos 
-    self.children = []
+  # def __init__(self, spelling=spelling, pos = pos):
+    # self.spelling = spelling 
+    # self.pos = pos 
+    # self.children = []
     
 
 class Adv(models.Model):
   spelling = models.CharField(max_length = 100)
   pos = models.CharField(max_length=5)
-  def __init__(self, spelling=spelling, pos = pos):
-    self.spelling = spelling 
-    self.pos = pos 
-    self.children = []
+  # def __init__(self, spelling=spelling, pos = pos):
+  #   self.spelling = spelling 
+  #   self.pos = pos 
+  #   self.children = []
 
 class Prep(models.Model):
   spelling = models.CharField(max_length = 100)
   pos = models.CharField(max_length=5)
-  def __init__(self, spelling=spelling, pos = pos):
-    self.spelling = spelling 
-    self.pos = pos   
-    self.children = []
+  # def __init__(self, spelling=spelling, pos = pos):
+  #   self.spelling = spelling 
+  #   self.pos = pos   
+  #   self.children = []
     
 
 
@@ -164,57 +193,32 @@ class Sentence:
         # for arg in args:
         #     print(arg)
         self.children = args
+  
 
-
+"""
+To print all nodes of a tree using depth-first search, only few lines are required:
+def printTree(root, level=0):
+print(" " * level, root.x)
+for child in root.children:
+printTree(child, level + 1)
+#tree = Node(..., children=[Node(...., ...), Node(...,....)] ...
+printTree(tree)
+"""
 
 ap = AdjectivePhrase(Adjective("big"), Noun("dog"))
-
 ap = ArticlePhrase(Article("the"), ap)
-
-lst = [Article("The"), Adjective("red"), Noun("ball")]
-# lst
-# [<Article object at 0x10646eb30>, <Adjective object at 0x10a017970>, <Noun object at 0x10a017f10>]
-the_red_ball = ArticlePhrase(Article("The"), AdjectivePhrase(Adjective("red"), Noun("ball")))
-# <Article object at 0x10a017700>
-# <Adjective object at 0x10a017dc0>
-# <Noun object at 0x10a017fa0>
-# the_red_ball
-# <output_file.ArticlePhrase object at 0x10a017d90>
-_is = Verb("is")
 blue = Adjective("blue")
+word_lines = nltk_words.nltk_words.split('\n')
+b = [line.split('\t') for line in bible.bible.split('\n')]
+b = [chunk.lower() for line in b for chunk in line]
+q = quran.quran.split('\n\n')
 
-_is_blue = VerbPhrase(_is, blue)
 
-the_red_ball_is_blue = Sentence(the_red_ball, _is_blue)
 
-print(the_red_ball_is_blue)
-
-# NP = NounPhrase
-# AdjP = AdjectivePhrase
-# ArtP = ArticlePhrase
-# S = Sentence
-# VP = VerbPhrase
-# N = Noun
-# V = Verb
-# Adj = Adjective
-# Art = Article
-# PP = PrepositionPhrase
-
-# s = Sentence(Article('the'), AdjectivePhrase(Adjective('little'), NounPhrase(Noun('dog')), VerbPhrase(Verb('runs'))))
-# cat = N('cat')
-
-# try:
-#    if cat.children:
-#      print('cat has children')
-# except AttributeError:
-#      print('cat has no children')
-
-# b = open('bible.txt', 'r')
-# b_lines = b.readlines()
-# b_lines = [line.split('\t')[-1].lower().replace(r'[,.:;]', '') for line in b_lines]
-lines = nltk_words.nltk_words.split('\n')
-# lines = nltk_words.nltk_words.split('\n')
-# print(lines)
+pp = PrepositionPhrase(Preposition('to', 'PP'), ArticlePhrase(Article('the', 'DT'), NounPhrase(Noun('store'))))
+vp = VerbPhrase(Verb('walked'), pp)
+ap = ArticlePhrase(Article('the', 'DT'), NounPhrase(Noun('dog', 'NN')))
+s = Sentence(ap, vp)
 d = {
   'words': [],
   'nouns': [],
@@ -225,7 +229,7 @@ d = {
   'adverbs': [],
 }
 
-for line in lines:
+for line in word_lines:
     d['words'].append(line)
     if ' NN' in line:
       d['nouns'].append(Noun(line.split()[0]))
@@ -256,193 +260,11 @@ rand_prep2 = d['prepositions'][ri(0, len(d['prepositions']))]
 rand_art = d['articles'][ri(0, len(d['articles']))]
 rand_art2 = d['articles'][ri(0, len(d['articles']))]
 
-sorted_nouns = sorted([noun.spelling for noun in d['nouns']])
-sorted_verbs = sorted([verb.spelling for verb in d['verbs']])
-sorted_adjectives = sorted([adj.spelling for adj in d['adjectives']])
-sorted_prepositions = sorted([prep.spelling for prep in d['prepositions']])
+# sorted_nouns = sorted(d['nouns'])
+# sorted_verbs = sorted([verb for verb in d['verbs']])
+# sorted_adjectives = sorted([adj for adj in d['adjectives']])
+# sorted_prepositions = sorted([prep for prep in d['prepositions']])
+# sorted_adverbs = sorted([adv for adv in d['adverbs']])
 
-
-
-# print(f'{rand_art.spelling} {rand_adj.spelling} {rand_noun.spelling} {rand_verb.spelling} {rand_prep.spelling} {rand_art2.spelling} {rand_adj2.spelling} {rand_noun2.spelling}')
-"""
-from output_file import *
-Currently feeding Lassie
-<Adjective object at 0x10a017310>
-<Noun object at 0x10a017370>
-<Article object at 0x10a017430>
-<output_file.AdjPhrase object at 0x10a0173d0>
-ap
-<output_file.ArticlePhrase object at 0x10a017490>
-ap.children
-(<Article object at 0x10a017430>, <output_file.AdjPhrase object at 0x10a0173d0>)
-ap.children[0]
-<Article object at 0x10a017430>
-ap.children[0].spelling
-'the'
-the = ap.children[0]
-the = the.spelling
-the
-'the'
-ap = AdjPhrase(Adjective("big"), Noun("dog"))
-<Adjective object at 0x10646e0b0>
-<Noun object at 0x10a017880>
-ap.children
-(<Adjective object at 0x10646e0b0>, <Noun object at 0x10a017880>)
-big = ap.children[0].spelling
-big = ap.children[1].spelling
-big = ap.children[0]
-dog = ap.children[1]
-dog
-<Noun object at 0x10a017880>
-the_big_dog
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-NameError: name 'the_big_dog' is not defined
-big_dog
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-NameError: name 'big_dog' is not defined
-big_dog = AdjPhrase(big, dog)
-<Adjective object at 0x10646e0b0>
-<Noun object at 0x10a017880>
-the_big_dog = ArticlePhrase(Article("the"), big_dog)
-<Article object at 0x10a017a90>
-<output_file.AdjPhrase object at 0x10a017a00>
-
-
-class Sentence:
-   def __init__(self, *args):
-     self.children = args
- 
-the_big_dog_runs = Sentence(the_big_dog, VerbPhrase("runs"))
-runs
-the_big_dog_runs
-<__main__.Sentence object at 0x10a017d00>
-the_big_dog_runchildren
-(<output_file.ArticlePhrase object at 0x10a017670>, <output_file.VerbPhrase object at 0x10a017ca0>)
-
-            
-"""
-"""
- np
-<output_file.NounPhrase object at 0x113d1b340>
- ap = ArticlePhrase(Article('the'), np))
-  File "<stdin>", line 1
-    ap = ArticlePhrase(Article('the'), np))
-                                          ^
-SyntaxError: unmatched ')'
- ap = ArticlePhrase(Article('the'), np)
- ap
-<__main__.ArticlePhrase object at 0x113d1b820>
- ap.children
-(<Article object at 0x1101720b0>, <output_file.NounPhrase object at 0x113d1b340>)
- ap.children[0]
-<Article object at 0x1101720b0>
- ap.children[1]
-<output_file.NounPhrase object at 0x113d1b340>
- ap.children[1].spelliung
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-AttributeError: 'NounPhrase' object has no attribute 'spelliung'
- ap.children[1].spelling
-Traceback (most recent call last):
-#  File "<stdin>", line 1, in <module>
-#AttributeError: 'NounPhrase' object has no attribute 'spelling'
-ap.children[1].pos
-#Traceback (most recent call last):
-#  File "<stdin>", line 1, in <module>
-#AttributeError: 'NounPhrase' object has no attribute 'pos'
- ap.children[1]
-#<output_file.NounPhrase object at 0x113d1b340>
- ap.children[1].pos
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-AttributeError: 'NounPhrase' object has no attribute 'pos'
-ap.children[1].children
-(<Adjective object at 0x113d1a830>, <Noun object at 0x113d1b2e0>)
-ap.children[1].children[1]
-<Noun object at 0x113d1b2e0>
-ap.children[1].children[1].spelling
-'dog
-ap.children[1].children[1].pos
-'Noun'
- 
-
-
-
-S
-
-
-
-
-
- ap = ArticlePhrase(Article('the'), np)
-ap
-<__main__.ArticlePhrase object at 0x113d1b820>
-ap.children
-(<Article object at 0x1101720b0>, <output_file.NounPhrase object at 0x113d1b340>)
-ap.children[0]
-<Article object at 0x1101720b0>
-ap.children[1]
-<output_file.NounPhrase object at 0x113d1b340>
-ap.children[1].spelliung
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-AttributeError: 'NounPhrase' object has no attribute 'spelliung'
-ap.children[1].spelling
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-AttributeError: 'NounPhrase' object has no attribute 'spelling'
-ap.children[1].pos
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-AttributeError: 'NounPhrase' object has no attribute 'pos'
-ap.children[1]
-<output_file.NounPhrase object at 0x113d1b340>
-ap.children[1].pos
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-AttributeError: 'NounPhrase' object has no attribute 'pos'
-ap.children[1].children
-(<Adjective object at 0x113d1a830>, <Noun object at 0x113d1b2e0>)
-ap.children[1].children[1]
-<Noun object at 0x113d1b2e0>
-ap.children[1].children[1].spelling
-'dog'
-ap.children[1].children[1].pos
-'Noun'
-the_big_dog = ap
-the_big_dog.the = ap.children[0]
-the_big_dog.the
-<Article object at 0x1101720b0>
-the_big_dog.the
-
-
-
-
-the_big_dog.dog = Noun("dog")
-the_big_dog
-<__main__.ArticlePhrase object at 0x113d1b820>
-the_big_dog.the
-<Article object at 0x1101720b0>
-the_big_dog.big
-<Adjective object at 0x113d1a830>
-dog
-<Noun object at 0x110353b50>
-ap
-<__main__.ArticlePhrase object at 0x113d1b820>
-ap.children
-(<Article object at 0x1101720b0>, <output_file.NounPhrase object at 0x113d1b340>)
-the_big_dog.children
-(<Article object at 0x1101720b0>, <output_file.NounPhrase object at 0x113d1b340>)
-type(the_big_dog.children)
-<class 'tuple'>
-
-"""
-
-# class N(models.Model):
-#     spelling = (models.CharField(default="word spelling"))
-
-# class
 
 
