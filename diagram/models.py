@@ -210,7 +210,9 @@ ap = ArticlePhrase(Article("the"), ap)
 blue = Adjective("blue")
 word_lines = nltk_words.nltk_words.split('\n')
 b = [line.split('\t') for line in bible.bible.split('\n')]
-b = [chunk.lower() for line in b for chunk in line]
+b_ = [chunk.lower() for line in b for chunk in line]
+b__ = [' '.join(line).lower() for line in b]
+# b = [chunk.lower() for line in b for chunk in line]
 q = quran.quran.split('\n\n')
 
 
