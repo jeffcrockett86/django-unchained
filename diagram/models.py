@@ -209,11 +209,22 @@ ap = AdjectivePhrase(Adjective("big"), Noun("dog"))
 ap = ArticlePhrase(Article("the"), ap)
 blue = Adjective("blue")
 word_lines = nltk_words.nltk_words.split('\n')
+wl_ = [line.split(' ')[:-1] for line in word_lines]
 b = [line.split('\t') for line in bible.bible.split('\n')]
-b_ = [chunk.lower() for line in b for chunk in line]
-b__ = [' '.join(line).lower() for line in b]
+# b_ = [chunk.lower() for line in b for chunk in line]
+b_ = [' '.join(line).lower() for line in b]
+all_bible_lines = [' '.join(line.split()) for line in b_]
+abl = [line for line in all_bible_lines if len(line) > 1]
 # b = [chunk.lower() for line in b for chunk in line]
-q = quran.quran.split('\n\n')
+# q = quran.quran.split('\n\n')
+bd = {}
+# for pair in wl_:
+#   for line in all_bible_lines:
+#     split_line = line.split()
+#     for word in split_line:
+#       if word in pair:
+#         bd[word] = pair
+# f = open('bible_dict.py', 'w').write(str(bd))
 
 
 
