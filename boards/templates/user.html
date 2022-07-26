@@ -1,0 +1,20 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href= "{% static 'boards/css/bootstrap.css' %}" />
+<body>
+
+    <h1>{{numbers}}</h1> 
+    {% for color in colors %}
+
+    <h1>{{color}}</h1>
+    
+    {% endfor %}
+    <!-- {% for story in story_list %}
+    <h2>
+      <a href="{{ story.get_absolute_url }}">
+        {{ story.headline|upper }}
+      </a>
+    </h2>
+    <p>{{ story.tease|truncatewords:"100" }}</p>
+    {% endfor %} -->
+  
+</body>

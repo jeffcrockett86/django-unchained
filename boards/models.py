@@ -11,7 +11,7 @@ name = ''
 
 class Post(models.Model):
     author = models.CharField(max_length=25, default="Anonymous")
-    name = models.CharField(max_length=144, default="Post Name")
+    title = models.CharField(max_length=144, default="Post Name")
     time = models.DateTimeField(auto_now_add=True, blank=True)
     content = models.CharField(max_length=10000, default="Post Content")
    
@@ -19,6 +19,10 @@ class Post(models.Model):
 class User(models.Model):
     username = models.CharField(max_length=25, default="Anonymous")
     posts = []
+
+class Comment(models.Model):
+    parent = None 
+    replies = []
 '''
  Anonymous 07/25/22(Mon)23:29:41 No.606992621   [Reply]▶>>607010219
 The first thing I will do when I get this will put my hand in the Goblet of Fire.
