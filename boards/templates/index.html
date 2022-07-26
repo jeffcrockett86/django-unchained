@@ -1,9 +1,57 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href= "{% static 'boards/css/bootstrap.css' %}" />
 <!-- <link rel="script" href= "{% static 'boards/js/bootstrap.js' %}" /> -->
+<style>
 
+    body {
+        background-color:white;
+    }
+    .sentence {
+        color: red;
+    }
+    .article {
+        color: orange;
+    }
+    .verb-phrase {
+        color: yellow;
+    }
+    .preposition {
+        color: rgb(153, 236, 153);
+    }
+    .noun {
+        color: blue;
+    }
+    .verb {
+        color: indigo;
+    }
+    .pronoun {
+        color: cornsilk;
+    }
+
+    
+</style>
 <body style="background-color: black">
     <h1 style="color:rgb(192, 192, 220);text-align: center;">REDCHAN</h1>
+    <div class="sentence" style="color:green;">
+        <div class="article-phrase" style="color:white; padding:50px;"">
+            <div class="article" style="color:rgb(135, 135, 239);padding:25px;">
+                My
+            </div>
+            <div class="noun">
+                computer
+            </div>
+            
+        </div>
+        <div class="verb-phrase">
+            <div class="verb" style="color:hotpink;">says</div>
+            <div class="noun">hello</div>
+        <div class="preposition-phrase">
+            <div class="preposition">to</div>
+            <div class="pronoun">you</div>
+        </div>
+        </div>
+    </div>
+    <h2>{{str_request}}</h2>
     <form style="text-align: center;margin-left:33%;margin-right:33%;">
         <div class="form-group justify-content-center">
           <label for="formGroupExampleInput">Title</label>
@@ -19,7 +67,7 @@
         {% for post in posts %}
         <!-- <h1 class="badge badge-secondary">Author: {{post.author}}</h1> -->
         <div style="text-align: center;"><
-        <h1 class="badge badge-primary" style="color:white;text-align: center;font-size:revert;">{{post.title}}</h1> <br><h3 class="badge badge-dark">by {{post.author}}</h3>
+        <h1 class="badge badge-primary" style="color:white;text-align: center;font-size:revert;">{{post.title}}</h1> <br><h3 class="badge badge-dark">by <a href="/boards/user">{{post.author}}<a></a></h3>
         <br>
 
         <p class="text-wrap badge badge-secondary" style="color:rgb(207, 217, 197); background-color:black;text-align: center;font-size:revert;">{{post.content}}</p>
@@ -28,5 +76,6 @@
     </div>
 
 {% endfor %}
+{{'testing'}}
     </body>
 

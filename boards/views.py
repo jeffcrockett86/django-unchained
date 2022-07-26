@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from boards.models import *
 from boards.models import rand
+import requests
 
 # d = {'posts': Post.objects.all()}
 
@@ -27,7 +28,9 @@ def user(request):
     
     ___________________________________________________________
 
-    
-    '''
+
+    ''',
+    'kevin_bacon': requests.get('https://en.wikipedia.org').text,
+    'str_request': ' '.join(str(request).split('/'))
 
     })
