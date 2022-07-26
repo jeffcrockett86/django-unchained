@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href= "{% static 'boards/css/bootstrap.css' %}" />
 <!-- <link rel="script" href= "{% static 'boards/js/bootstrap.js' %}" /> -->
 
-<body style="background-color: antiquewhite">
+<body style="background-color: black">
     <form style="text-align: center;">
         <div class="form-group justify-content-center">
           <label for="formGroupExampleInput">Title</label>
@@ -17,9 +17,10 @@
 >                 
         {% for post in posts %}
         <!-- <h1 class="badge badge-secondary">Author: {{post.author}}</h1> -->
-        <span class="badge badge-primary">{{post.name}}</span> <span class="badge badge-dark">by {{post.author}}</span>
+        <h1 class="badge badge-primary" style="color:white;">{{post.title}}</h1> <h3 class="badge badge-dark">by {{post.author}}</h3>
         <br>
-        <p class="text-wrap badge badge-secondary">{{post.content}}</p>
+
+        <p class="text-wrap badge badge-secondary" style="color:chartreuse; background-color:black;">{{post.content}}</p>
         </div>
         <br><br>
 

@@ -23,5 +23,11 @@ def user(request):
     'pictures': [],
     'alphanum': ALPHANUM,
     'numquam': u,
+    'spacer': '''
+    
+    ___________________________________________________________
+
+    
+    '''
 
     })

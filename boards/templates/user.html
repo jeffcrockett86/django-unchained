@@ -1,15 +1,18 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href= "{% static 'boards/css/bootstrap.css' %}" />
-<body>
+<body style="background-color: black;">
 <!-- 
     <h1>{{numbers}}</h1>  -->
     <p>This person's username is {{user.username}}</p>
     <!-- <p>This person's posts are {{user.posts}}</p> -->
     <p>The titles of this person's posts are 
-        <h1>
-            {{numquam}}
+        <h1 style="color: aliceblue;text-align:center;">
+            {{numquam.username}}
             {% for post in numquam.posts %}
-            <p>{{post.title}}</p>
+            <p style="color:aqua;">{{post.title}}</p>
+            <h6 style="color:chartreuse;">{{post.author}}</h6>
+            <h3>{{post.contents}}</h3>
+            {{spacer}}
             {% endfor %}
          
           
