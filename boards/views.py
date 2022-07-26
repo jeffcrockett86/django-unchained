@@ -8,4 +8,4 @@ from boards.models import rand
 def index(request):
     post = rand(Post.objects.all())
     # return HttpResponse(f'<h1>{post.author} {post.time} {post.name} {post.content}</h1>')
-    return render(request, 'index.html', {'posts': Post.objects.all()})
+    return render(request, 'index.html', {'posts': Post.objects.all()[:25]})

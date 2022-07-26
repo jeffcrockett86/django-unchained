@@ -1,18 +1,28 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href= "{% static 'boards/css/bootstrap.css' %}" />
+<!-- <link rel="script" href= "{% static 'boards/js/bootstrap.js' %}" /> -->
 
-<html>
-    <body style="col-1">
-        <div class="alert alert-primary" role="alert">
-       
-          
-        {% for post in posts %}
-        <h1>Author: {{post.author}}</h1>
-        <h1>Title: {{post.name}}</h1>
-        <h3>Content: {{post.content}}</h3>
+<body style="background-color: antiquewhite">
+    <form style="text-align: center;">
+        <div class="form-group justify-content-center">
+          <label for="formGroupExampleInput">Title</label>
+          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter a title">
+        </div><br>
+        <div class="form-group justify-content-center">
+          <label for="formGroupExampleInput2">Content</label><br>
+          <input type="textarea" class="form-control" id="formGroupExampleInput2" placeholder="Type your post">
         </div>
+      </form>
+ 
+>                 
+        {% for post in posts %}
+        <!-- <h1 class="badge badge-secondary">Author: {{post.author}}</h1> -->
+        <span class="badge badge-primary">{{post.name}}</span> <span class="badge badge-dark">by {{post.author}}</span>
+        <br>
+        <p class="text-wrap badge badge-secondary">{{post.content}}</p>
+        </div>
+        <br><br>
 
 {% endfor %}
     </body>
 
-</html>
