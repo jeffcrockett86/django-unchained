@@ -3,7 +3,8 @@
 <!-- <link rel="script" href= "{% static 'boards/js/bootstrap.js' %}" /> -->
 
 <body style="background-color: black">
-    <form style="text-align: center;">
+    <h1 style="color:rgb(192, 192, 220);text-align: center;">REDCHAN</h1>
+    <form style="text-align: center;margin-left:33%;margin-right:33%;">
         <div class="form-group justify-content-center">
           <label for="formGroupExampleInput">Title</label>
           <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter a title">
@@ -17,12 +18,14 @@
 >                 
         {% for post in posts %}
         <!-- <h1 class="badge badge-secondary">Author: {{post.author}}</h1> -->
-        <h1 class="badge badge-primary" style="color:white;">{{post.title}}</h1> <h3 class="badge badge-dark">by {{post.author}}</h3>
+        <div style="text-align: center;"><
+        <h1 class="badge badge-primary" style="color:white;text-align: center;font-size:revert;">{{post.title}}</h1> <br><h3 class="badge badge-dark">by {{post.author}}</h3>
         <br>
 
-        <p class="text-wrap badge badge-secondary" style="color:chartreuse; background-color:black;">{{post.content}}</p>
+        <p class="text-wrap badge badge-secondary" style="color:rgb(207, 217, 197); background-color:black;text-align: center;font-size:revert;">{{post.content}}</p>
         </div>
         <br><br>
+    </div>
 
 {% endfor %}
     </body>
