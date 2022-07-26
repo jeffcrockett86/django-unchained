@@ -1,12 +1,16 @@
-<html>
-    <head>
+{% load static %}
+<link rel="stylesheet" type="text/css" href= "{% static 'boards/css/bootstrap.css' %}" />
 
-    </head>
-    <body>
+<html>
+    <body style="col-1">
+        <div class="alert alert-primary" role="alert">
+       
+          
         {% for post in posts %}
         <h1>Author: {{post.author}}</h1>
         <h1>Title: {{post.name}}</h1>
         <h3>Content: {{post.content}}</h3>
+        </div>
 
 {% endfor %}
     </body>
