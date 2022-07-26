@@ -13,8 +13,10 @@ def index(request):
 
 def user(request):
     _user = User.objects.get(id=37)
+    _user2 = User.objects.get(id=38)
     http_response = HttpResponse('I"m the HTTP response!"') 
-    return render(request, 'user.html', {'user': _user, 
+    return render(request, 'user.html', {'user': _user,
+    'user2': _user2, 
     'posttitles': [post.title for post in _user.posts],
     'postauthors': [post.author for post in _user.posts],
     'postcontents': [post.content for post in _user.posts],
@@ -34,3 +36,6 @@ def user(request):
     'str_request': ' '.join(str(request).split('/'))
 
     })
+
+def test(request):
+    return render(request, 'test.html', {'numbers': [1,2,3,4,5,6,7,8,9,10]})

@@ -3,15 +3,15 @@
 <body style="background-color: black;">
 <!-- 
     <h1>{{numbers}}</h1>  -->
-    <h1>{{request}}</h1>
-    <p>This person's username is {{user.username}}</p>
+    <h1 style="color:chartreuse;">{{request}}</h1>
+    <!-- <p style="color:white;">This person's username is {{user.username}}</p> -->
     <!-- <p>This person's posts are {{user.posts}}</p> -->
-    <p>The titles of this person's posts are 
+    <p style="color:white;">
         <h1 style="color: aliceblue;text-align:center;">
             {{numquam.username}}
             {% for post in numquam.posts %}
-            <p style="color:aqua;">{{post.title}}</p>
-            <h6 style="color:chartreuse;">{{post.author}}</h6>
+            <h3 style="color:aqua;">{{post.title}}</h3>
+            <h6 style="color:chartreuse;">by {{post.author}}</h6>
             <h5 style="color:aliceblue;">{{post.content}}</h5>
             {{spacer}}
             {% endfor %}
