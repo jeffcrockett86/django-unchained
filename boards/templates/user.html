@@ -1,13 +1,26 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href= "{% static 'boards/css/bootstrap.css' %}" />
 <body>
+<!-- 
+    <h1>{{numbers}}</h1>  -->
+    <p>This person's username is {{user.username}}</p>
+    <!-- <p>This person's posts are {{user.posts}}</p> -->
+    <p>The titles of this person's posts are 
+        <h1>
+            {{numquam}}
+            {% for post in numquam.posts %}
+            <p>{{post.title}}</p>
+            {% endfor %}
+         
+          
+        </h1>
 
-    <h1>{{numbers}}</h1> 
-    {% for color in colors %}
+    </p>
+    <!-- {% for color in colors %}
 
     <h1>{{color}}</h1>
     
-    {% endfor %}
+    {% endfor %} -->
     <!-- {% for story in story_list %}
     <h2>
       <a href="{{ story.get_absolute_url }}">

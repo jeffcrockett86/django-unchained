@@ -12,12 +12,16 @@ def index(request):
 
 def user(request):
     _user = User.objects.get(id=37)
-    posts = _user.posts 
+    http_response = HttpResponse('I"m the HTTP response!"') 
     return render(request, 'user.html', {'user': _user, 
-    'userposts': posts,
+    'posttitles': [post.title for post in _user.posts],
+    'postauthors': [post.author for post in _user.posts],
+    'postcontents': [post.content for post in _user.posts],
     'request': request,
     'numbers': [num for num in range(100)],
     'colors': ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
     'pictures': [],
+    'alphanum': ALPHANUM,
+    'numquam': u,
 
     })

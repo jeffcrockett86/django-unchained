@@ -23,6 +23,10 @@ class User(models.Model):
 class Comment(models.Model):
     parent = None 
     replies = []
+
+u = User.objects.get(id=37)
+u.posts = [post for post in Post.objects.all() if post.author == 'Numquam']
+u.save()
 '''
  Anonymous 07/25/22(Mon)23:29:41 No.606992621   [Reply]▶>>607010219
 The first thing I will do when I get this will put my hand in the Goblet of Fire.
