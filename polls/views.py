@@ -24,38 +24,15 @@ the_OA = []
 # divs = re.findall('<div.\w*="\w*', pol.html)
 underscore = '_'
 def index(request):
-    # html = requests.get(f'https://en.wikipedia.org/wiki/Kevin_Bacon').text
-    # html = html.replace(html, reddit.my_html)
-    # m = M.Page(html)
-    # the_OA.append(m)
-    # return HttpResponse(html)
-    x = list(models.Post.objects.all())
-    string = f'''
-    <div class="dropdown">
-  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown"><li>
-    ''' + x[ri(0,len(x))].content + '</li></ul></div>'
+    return HttpResponse('<h1>Hello, World!</h1>')
 
-    
-    
-    
-    # <li><a class="dropdown-item" href="#">Dropdown item</a></li>
-    # <li><a class="dropdown-item" href="#">Dropdown item</a></li>
-    # <li><a class="dropdown-item" href="#">Dropdown item</a></li>
 
-   
-    # return HttpResponse('<h1>' + x[ri(0,len(x))].content + '</h1>')
-    return HttpResponse(string)
 def index2(request):
     print(request)
     return HttpResponse(['<h1>' + word + '</h1>' for word in words])
-# Create your views here.
-t = requests.get(f'https://google.com').text
 
-def index3(request):
-    return HttpResponse('<h1>Hello, World!</h1>')
+# Create your views here.
+# t = requests.get(f'https://google.com').text
 
 def index4(request):
     html = requests.get('https://www.nytimes.com/games/wordle/index.html').text
@@ -85,10 +62,7 @@ def index8(request):
     html = html.replace('Ed Harris', 'Kevin Bacon was in Apollo 13 with Ed Harris')
     return HttpResponse(html)
 
-def index9(request):
-    html = requests.get('https://www.reddit.com').text
-    html = html.replace('Reddit', 'Jeffit')
-    return HttpResponse(html)
+
 
 def index10(request):
     html = requests.get('https://www.imdb.com/name/nm0000438/?ref_=fn_al_nm_1').text

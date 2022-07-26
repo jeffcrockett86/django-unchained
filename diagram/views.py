@@ -32,6 +32,32 @@ STACK_OVERFLOW_CSS = '''
 }
 '''
 
+STACK_OVERFLOW_CSS2 = '''
+<style>div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120px;
+    height: 120px;
+    margin:-60px 0 0 -60px;
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+}
+@-moz-keyframes spin { 
+    100% { -moz-transform: rotate(360deg); } 
+}
+@-webkit-keyframes spin { 
+    100% { -webkit-transform: rotate(360deg); } 
+}
+@keyframes spin { 
+    100% { 
+        -webkit-transform: rotate(360deg); 
+        transform:rotate(360deg); 
+    } 
+}</style>
+'''
+
 style = '''  <body style="text-align: center;
     color: aliceblue;
     font-family: monospace;
@@ -123,12 +149,12 @@ def q(request):
 def s(request):
     return HttpResponse(f'<h1>{m.s.children[0].children[0].spelling}</h1>')
 
-def spin(request):
-    html = f'<body style={spin_style}'
-    div_count = 0
-    colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
-    for adv in m.d['adverbs'][:25]:
-        html += f'<div style="background: {colors[ri(0, len(colors)-1)]};">' + adv.spelling
-        div_count += 1
-    html += '</div>' * div_count
-    return HttpResponse(html + '</body>')
+# def spin(request):
+#     html = f'<body style={spin_style}'
+#     div_count = 0
+#     colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+#     for adv in m.d['adverbs'][:25]:
+#         html += f'<div style="background: {colors[ri(0, len(colors)-1)]};">' + adv.spelling
+#         div_count += 1
+#     html += '</div>' * div_count
+#     return HttpResponse(html + '</body>')

@@ -242,36 +242,59 @@ d = {
   'adverbs': [],
 }
 
-for line in word_lines:
-    d['words'].append(line)
+for line in word_lines[1000:2000]:
+    split_line = line.split(' ')
+    # d['words'].append(line)
     if ' NN' in line:
-      d['nouns'].append(Noun(line.split()[0]))
-    if ' VBZ' in line:
-      d['verbs'].append(Verb(line.split()[0]))
-    if ' JJ' in line:
-      d['adjectives'].append(Adjective(line.split()[0]))
-    if ' IN' in line:
-      d['prepositions'].append(Preposition(line.split()[0]))
-    if ' DT' in line:
-      d['articles'].append(Article(line.split()[0]))
-    if ' RB' in line:
-      d['adverbs'].append(Adverb(line.split()[0]))
+      n = N.objects.create(spelling=split_line[0], pos = split_line[1])
+      n.save()
+      # d['nouns'].append(Noun(line.split()[0]))
+    elif ' VBZ' in line:
+      v = V.objects.create(spelling=split_line[0], pos = split_line[1])
+      v.save()
+
+      # d['verbs'].append(Verb(line.split()[0]))
+    elif ' JJ' in line:
+      adj = Adj.objects.create(spelling=split_line[0], pos = split_line[1])
+      adj.save()
+      # d['adjectives'].append(Adjective(line.split()[0]))
+    elif ' IN' in line:
+      prep = Prep.objects.create(spelling=split_line[0], pos = split_line[1])
+      prep.save()
+      # d['prepositions'].append(Preposition(line.split()[0]))
+    elif ' DT' in line:
+      art = Art.objects.create(spelling=split_line[0], pos = split_line[1])
+      art.save()
+
+      # d['articles'].append(Article(line.split()[0]))
+    elif ' RB' in line:
+      adv = Adv.objects.create(spelling=split_line[0], pos = split_line[1])
+      adv.save()
+      # d['adverbs'].append(Adverb(line.split()[0]))
   
 
-rand_noun = d['nouns'][ri(0, len(d['nouns']))]
-rand_noun2 = d['nouns'][ri(0, len(d['nouns']))]
+# rand_noun = d['nouns'][ri(0, len(d['nouns']))]
+# rand_noun2 = d['nouns'][ri(0, len(d['nouns']))]
 
-rand_adj = d['adjectives'][ri(0, len(d['adjectives']))]
-rand_adj2 = d['adjectives'][ri(0, len(d['adjectives']))]
+# rand_adj = d['adjectives'][ri(0, len(d['adjectives']))]
+# rand_adj2 = d['adjectives'][ri(0, len(d['adjectives']))]
 
-rand_verb = d['verbs'][ri(0, len(d['verbs']))]
-rand_verb2 = d['verbs'][ri(0, len(d['verbs']))]
+# rand_verb = d['verbs'][ri(0, len(d['verbs']))]
+# rand_verb2 = d['verbs'][ri(0, len(d['verbs']))]
 
-rand_prep = d['prepositions'][ri(0, len(d['prepositions']))]
-rand_prep2 = d['prepositions'][ri(0, len(d['prepositions']))]
+# rand_prep = d['prepositions'][ri(0, len(d['prepositions']))]
+# rand_prep2 = d['prepositions'][ri(0, len(d['prepositions']))]
 
-rand_art = d['articles'][ri(0, len(d['articles']))]
-rand_art2 = d['articles'][ri(0, len(d['articles']))]
+# rand_art = d['articles'][ri(0, len(d['articles']))]
+# rand_art2 = d['articles'][ri(0, len(d['articles']))]
+
+# test_verse = rand(b_)
+# print(test_verse)
+def verse_without_numbers(verse):
+  # example verse is 'job 27:16 though he heap up silver as the dust, and prepare raiment as the clay;'
+  return ' '.join([word for word in rand(verse).split(' ') if not word.replace(':', '').isnumeric()])
+
+vwn = verse_without_numbers
 
 # sorted_nouns = sorted(d['nouns'])
 # sorted_verbs = sorted([verb for verb in d['verbs']])
