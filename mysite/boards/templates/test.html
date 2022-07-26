@@ -1,0 +1,38 @@
+{% import static %}
+<!-- saved from url=(0029)http://127.0.0.1:8000/boards/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" type="text/css" href="./127.0.0.1_files/bootstrap.css">
+<!-- <link rel="script" href= "/static/boards/js/bootstrap.js" /> -->
+<style>
+
+    body {
+        background-color:white;
+    }
+    .sentence {
+        color: red;
+    }
+    .article {
+        color: orange;
+    }
+    .verb-phrase {
+        color: yellow;
+    }
+    .preposition {
+        color: rgb(153, 236, 153);
+    }
+    .noun {
+        color: blue;
+    }
+    .verb {
+        color: indigo;
+    }
+    .pronoun {
+        color: cornsilk;
+    }
+
+    
+</style>
+</head><body style="background-color: black">
+        {% for color in colors %}
+        <p>{{color}}</p>
+        {% endfor %}
+ </body>
