@@ -33,9 +33,37 @@ def user(request):
 
     ''',
     'kevin_bacon': requests.get('https://en.wikipedia.org').text,
-    'str_request': ' '.join(str(request).split('/'))
+    'str_request': ' '.join(str(request).split('/')),
+    'split_str_request': str(request).split('/')
 
     })
 
-def test(request):
+def test_a(request):
     return render(request, 'test.html', {'numbers': [1,2,3,4,5,6,7,8,9,10]})
+
+def user2(request):
+    user = User.objects.get(id=37)
+    http_response = HttpResponse('I"m the HTTP response!"') 
+    return render(request, 'user2.html', {'user': user,
+    'username': user.username,
+    'posttitles': [post.title for post in user.posts],
+    'userposts': user.posts,
+    # 'postauthors': [post.author for post in Us],
+    # 'postcontents': [post.content for post in user.posts],
+    'request': request,
+    'numbers': [num for num in range(100)],
+    'colors': ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
+    'pictures': [],
+    'alphanum': ALPHANUM,
+    'spacer': '''
+        
+    ___________________________________________________________
+
+
+    ''',
+    'kevin_bacon': requests.get('https://en.wikipedia.org').text,
+    'str_request': ' '.join(str(request).split('/')),
+    'split_str_request': str(request).split('/')
+
+    })
+

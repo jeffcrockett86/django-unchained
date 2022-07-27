@@ -52,6 +52,7 @@
         </div>
     </div>
     <h2>{{str_request}}</h2>
+    <h1>MY NAME IS {{user.username}}</h1>
     <form style="text-align: center;margin-left:33%;margin-right:33%;">
         <div class="form-group justify-content-center">
           <label for="formGroupExampleInput">Title</label>
@@ -64,7 +65,7 @@
       </form>
  
 >                 
-        {% for post in posts %}
+        {% for post in userposts %}
         <!-- <h1 class="badge badge-secondary">Author: {{post.author}}</h1> -->
         <div style="text-align: center;"><
         <h1 class="badge badge-primary" style="color:white;text-align: center;font-size:revert;">{{post.title}}</h1> <br><h3 class="badge badge-dark">by <a href="/boards/user">{{post.author}}<a></a></h3>
@@ -76,6 +77,6 @@
     </div>
 
 {% endfor %}
-{{'testing'}}
+
     </body>
 

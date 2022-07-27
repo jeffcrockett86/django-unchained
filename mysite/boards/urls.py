@@ -4,5 +4,5 @@ from random import randint as ri
 
 urlpatterns = [path('', views.index, name='index'),
 path('', views.index, name="index"),
-path('test/', views.test, name="_test"),
+path('/test/', views.test, name="test"),
 ]

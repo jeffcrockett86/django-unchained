@@ -1,0 +1,58 @@
+{% load static %}
+<!-- {'user': _user,
+'user2': _user2, 
+'posttitles': [post.title for post in _user.posts],
+'postauthors': [post.author for post in _user.posts],
+'postcontents': [post.content for post in _user.posts],
+'request': request, -->
+<!-- 'numbers': [num for num in range(100)],
+'colors': ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
+'pictures': [],
+'alphanum': ALPHANUM,
+'numquam': u,
+'spacer': '''
+    
+___________________________________________________________
+
+
+''',
+'kevin_bacon': requests.get('https://en.wikipedia.org').text,
+'str_request': ' '.join(str(request).split('/')),
+'split_str_request': str(request).split('/')
+
+} -->
+<link rel="stylesheet" type="text/css" href= "{% static 'boards/css/bootstrap.css' %}" />
+<body style="background-color: black;">
+<!-- 
+    <h1>{{numbers}}</h1>  -->
+    <h1 style="color:chartreuse;">{{request}}</h1>
+    <h2 style="color:turquoise">{{split_str_request}}</h2>
+    <!-- <p style="color:white;">This person's username is {{user.username}}</p> -->
+    <!-- <p>This person's posts are {{user.posts}}</p> -->
+
+    <h1 style="color: aliceblue;text-align:center;background-color: black;">
+      {{user2.username}}
+      {% for post in user2.posts %}
+          <h3 style="color:aqua;">{{post.title}}</h3>
+          <h6 style="color:chartreuse;">by {{post.author}}</h6>
+          <h5 style="color:aliceblue;">{{post.content}}</h5>
+            {{spacer}}
+            {% endfor %}
+         
+          
+        </h1>
+
+
+    {% for color in colors %}
+
+    <h1>{{color}}</h1>
+    
+    {% endfor %} -->
+
+    {% for post in userposts %}
+    <p><span>{{post.title}}</span> by <span>{{post.author}}</span></p>
+    <p><span>{{post.content}}</span></p>
+    {% endfor %}
+
+  
+</body>
