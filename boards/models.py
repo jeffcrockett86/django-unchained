@@ -57,12 +57,15 @@ for user in user_list:
         c.parent = post
         post.comments.append(c)
 
-# for user in user_list:
-#     for post in user.posts:
-#         for comment in post.comments:
-#             comment.content = lorem.sentence()
-#             comment.save()
+for i in range(len(user_list)):
+    user = user_list[i]
+    user.posts = user.posts[:5]
 
+
+for i in range(len(user_list)):
+    user = user_list[i]
+    for i in range(len(user.posts)):
+        user.posts[i].comments = user.posts[i].comments[:5]
 
 # z = zip(first_25, [post.comments for post in first_25])
 # d = dict(z)

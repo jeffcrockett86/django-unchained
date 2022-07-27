@@ -4,22 +4,23 @@
   let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
 </script>
 <body style="background-color: black; color: white;">
-{% for user in user_list %}
+
 <div class="user" + {{user.id}}>
-    Username is {{user.username}}
     <div class="posts"> 
         {% for post in user.posts %}
-        <div><h3>{{post.author}}</h3>
+        <div><h3 style="color:green; padding:525x;">{{post.author}}</h3>
             <h3>{{post.title}}</h3>
-                <h3>{{post.content}}</h3>
-                <ul>
+                <h3 style="color:rgb(103, 183, 240);">{{post.content}}</h3>
+                <ul onclick="this.style.display = none">
                     {% for comment in post.comments %}
-                    <l1>{{comment.content}} to {{comment.parent.author}}</l1>
-                    {% endfor %}
+                    <l1><span style="color:orange;" onclick="this.style.display = none">@ {{comment.parent.author}}</span>{{comment.content}}<br> 
+                    {% endfor %}</l1>
+                   
+                  
                     </ul>
             </div>
         {% endfor %}
     </div>
 </div>
-{% endfor %}
+
 </body>

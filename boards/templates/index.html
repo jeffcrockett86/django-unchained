@@ -35,7 +35,7 @@
     <h3 style="color:aqua">{{post.title}}</h3>
     <h4 style="color:burlywood">by {{post.author}}</h4>
     <h5 style="color:aliceblue">{{post.content}}</h5>
-    <div onclick="toggleVisibility(this)" class="comments" style="color:darkgoldenrod;">
+    <div class="comments" style="color:darkgoldenrod;">
     <span>Comments</span>
     {% for comment in post.comments %}
     <h6>{{comment.content}}</h6>

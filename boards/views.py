@@ -10,6 +10,7 @@ def index(request):
     # return HttpResponse(f'<h1>{post.author} {post.time} {post.name} {post.content}</h1>')
     return render(request, 'index.html', {'posts': first_10, 
         'userlist': user_list[:10],
+        'user': user_list[0],
         'numbers': [num for num in range(1, 11)],
      
     })
@@ -160,7 +161,7 @@ def user7(request):
     })
 
 def tree(request):
-    return render(request, 'tree.html', {'user_list': user_list})
+    return render(request, 'tree.html', {'user': user_list[0]})
 
 def user8(request):
     print(str(request).split('/'))
@@ -219,3 +220,75 @@ def user10(request):
 
     })
 
+
+def one(request):
+    return render(request, 'tree.html', {'user': user_list[0]})
+
+def two(request):
+    return render(request, 'tree.html', {'user': user_list[1]})
+
+def three(request):
+    return render(request, 'tree.html', {'user': user_list[2]})
+
+def four(request):
+    return render(request, 'tree.html', {'user': user_list[3]})
+
+def five(request):
+    return render(request, 'tree.html', {'user': user_list[4]})
+
+def six(request):
+    return render(request, 'tree.html', {'user': user_list[5]})
+
+def seven(request):
+    return render(request, 'tree.html', {'user': user_list[6]})
+
+def eight(request):
+    return render(request, 'tree.html', {'user': user_list[7]})
+
+def nine(request):
+    return render(request, 'tree.html', {'user':user_list[8] })
+
+def ten(request):
+    return render(request, 'tree.html', {'user': user_list[9]})
+
+def eleven(request):
+    return render(request, 'tree.html', {'user': user_list[10]})
+
+def twelve(request):
+    return render(request, 'tree.html', {'user': user_list[11]})
+
+def thirteen(request):
+    return render(request, 'tree.html', {'user': user_list[12]})
+
+def fourteen(request):
+    return render(request, 'tree.html', {'user': user_list[13]})
+
+def fifteen(request):
+    return render(request, 'tree.html', {'user': user_list[14]})
+
+def sixteen(request):
+    return render(request, 'tree.html', {'user': user_list[15]})
+
+def seventeen(request):
+    return render(request, 'tree.html', {'user': user_list[16]})
+
+def eighteen(request):
+    return render(request, 'tree.html', {'user': user_list[17]})
+
+def nineteen(request):
+    return render(request, 'tree.html', {'user': user_list[18]})
+
+def twenty(request):
+    return render(request, 'tree.html', {'user': user_list[19]})
+
+def twenty_one(request):
+    return render(request, 'tree.html', {'user': user_list[20]})
+
+def twenty_two(request):
+    return render(request, 'tree.html', {'user': user_list[21]})
+
+def twenty_three(request):
+    return render(request, 'tree.html', {'user': user_list[22]})
+
+def twenty_four(request):
+    return render(request, 'tree.html', {'user': user_list[23]})
