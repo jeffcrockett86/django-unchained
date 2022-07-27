@@ -14,6 +14,14 @@ class Post(models.Model):
     name = models.CharField(max_length=144, default="Post Name")
     time = models.DateTimeField(auto_now_add=True, blank=True)
     content = models.CharField(max_length=10000, default="Post Content")
+
+class Comment(models.Model):
+    author = models.CharField(max_length=25, default="Anonymous")
+    time = models.DateTimeField(auto_now_add=True, blank=True)
+    content = models.CharField(max_length=10000, default="Post Content")
+    parent = None
+
+
    
 '''
  Anonymous 07/25/22(Mon)23:29:41 No.606992621   [Reply]▶>>607010219

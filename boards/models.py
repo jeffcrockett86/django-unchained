@@ -14,19 +14,39 @@ class Post(models.Model):
     title = models.CharField(max_length=144, default="Post Name")
     time = models.DateTimeField(auto_now_add=True, blank=True)
     content = models.CharField(max_length=10000, default="Post Content")
-   
+    comments = []
 
 class User(models.Model):
     username = models.CharField(max_length=25, default="Anonymous")
     posts = []
 
 class Comment(models.Model):
+    # author = models.CharField(max_length=25, default="Anonymous")
+    content = models.CharField(max_length=10000, default="Comment")
     parent = None 
     replies = []
 
+
+users = User.objects.all()
+posts = Post.objects.all()
 u = User.objects.get(id=37)
-u.posts = [post for post in Post.objects.all() if post.author == 'Numquam']
+u.posts = [post for post in posts if post.author == 'Numquam']
 u.save()
+u2 = User.objects.get(id=38)
+u2.posts = [post for post in posts if post.author == 'Porro']
+u2.save()
+u3 = User.objects.get(id=39)
+first_25 = Post.objects.all()[:25]
+first_25_ = None
+u3.posts = [post for post in posts if post.author == 'Voluptatem']
+
+for post in first_25:
+   c = Comment(content=lorem.text())
+   c.parent = post
+   c.save()
+   post.comments.append(c)
+   post.save()
+
 '''
  Anonymous 07/25/22(Mon)23:29:41 No.606992621   [Reply]▶>>607010219
 The first thing I will do when I get this will put my hand in the Goblet of Fire.
