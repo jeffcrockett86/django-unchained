@@ -2,7 +2,19 @@
 <head>
 <link rel="stylesheet" type="text/css" href= "{% static 'boards/css/bootstrap.css' %}" />
 <link rel="script" href= "{% static 'boards/js/bootstrap.js' %}" />
-<script>let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];</script>
+<script>let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+// let count = 0;
+// function toggleVisibility(item) {
+//     count++ 
+//     if (count % 2 === 1) {
+//         item.style.display = 'none'
+//     }
+//     if (count % 2 === 0) {
+//         item.style.display = 'block'
+//     }
+//     return count;
+// }
+</script>
 </head>
 
 <body style="background-color: black; color:white;">
@@ -18,6 +30,18 @@
         </button>
     </nav>
     <h1 style="color:rgb(192, 192, 220);text-align: center;padding:75px;" onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">REDCHAN</h1>
+
+    {% for post in posts %} 
+    <h3 style="color:aqua">{{post.title}}</h3>
+    <h4 style="color:burlywood">by {{post.author}}</h4>
+    <h5 style="color:aliceblue">{{post.content}}</h5>
+    <div onclick="toggleVisibility(this)" class="comments" style="color:darkgoldenrod;">
+    <span>Comments</span>
+    {% for comment in post.comments %}
+    <h6>{{comment.content}}</h6>
+    {% endfor %}
+    {% endfor %}
+    </div>
     <!-- <div class="sentence" style="color:green;">
         <div class="article-phrase" style="color:white; padding:50px;"">
             <div class="article" style="color:rgb(135, 135, 239);padding:25px;">
@@ -38,12 +62,12 @@
         </div>
     </div> -->
     <!-- <h2 onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{str_request}}</h2> -->
-{% for post in posts %}
+<!-- {% for post in posts %}
 <h3 onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{post.title}}</h3>
 <h4 onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">by {{post.author}}</h4>
 <h6 onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{post.content}}</h6>
-{% endfor %}
-    <form style="text-align: center;margin-left:33%;margin-right:33%;">
+{% endfor %} -->
+    <!-- <form style="text-align: center;margin-left:33%;margin-right:33%;">
         <div class="form-group justify-content-center">
           <label for="formGroupExampleInput">Title</label>
           <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter a title">
@@ -52,7 +76,7 @@
           <label for="formGroupExampleInput2">Content</label><br>
           <input type="textarea" class="form-control" id="formGroupExampleInput2" placeholder="Type your post">
         </div>
-      </form>
+      </form> -->
  
 >                 
         <!-- {% for post in first_25 %}

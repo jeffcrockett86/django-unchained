@@ -38,6 +38,8 @@ ___________________________________________________________
           <span class="navbar-toggler-icon">This is some text in the span that's inside the button</span>
         </button>
     </nav>
+    <h1 style="color:rgb(192, 192, 220);text-align: center;padding:75px;" onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]"><a href="/boards">REDCHAN</a></h1>
+
 <!-- 
     <h1>{{numbers}}</h1>  -->
     <!-- <h1 style="color:chartreuse;">{{request}}</h1>
@@ -45,7 +47,11 @@ ___________________________________________________________
     <h1 style="color:aliceblue;text-align:center;" onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{user.username}}</h1>
     <!-- <p style="color:white;">This person's username is {{user.username}}</p> -->
     <!-- <p>This person's posts are {{user.posts}}</p> -->
-
+        {% for post in userposts %}
+        <h3>{{post.title}}</p>
+            <h5>{{post.author}}</h5>
+            <h6>{{post.content}}</h6>
+            {% endfor %}
     <h1 style="color: aliceblue;text-align:center;background-color: black;">
   
       {% for post in userposts %}

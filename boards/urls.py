@@ -4,7 +4,7 @@ from random import randint as ri
 
 urlpatterns = [path('', views.index, name='index'),
 # path('user/', views.user2, name="user"),
-path('user/', views.user1, name="user1"),
+path('page/1', views.user1, name="user1"),
 path('page/2', views.user2, name="user2"),
 path('page/3', views.user3, name="user3"),
 path('page/4', views.user4, name="user4"),

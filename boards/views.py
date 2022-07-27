@@ -1,19 +1,25 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from boards.models import *
-from boards.models import rand
+# from boards.models import rand
 import requests
 
 # d = {'posts': Post.objects.all()}
 
 def index(request):
-    post = rand(Post.objects.all())
     # return HttpResponse(f'<h1>{post.author} {post.time} {post.name} {post.content}</h1>')
-    return render(request, 'index.html', {'posts': first_10, 'numbers': [num for num in range(1, 11)]})
+    return render(request, 'index.html', {'posts': first_10, 
+        'userlist': user_list[:10],
+        'numbers': [num for num in range(1, 11)],
+        'comment_lists': [post.comments for post in Post.objects.all()][:10],
+        'items': dict_items,
+        'keys': [item[0] for item in dict_items],
+        'values': [item[1] for item in dict_items]})
 
 def user1(request):
     print(str(request).split('/'))
     return render(request, 'user1.html', {'user': u,
+    'user_list': user_list,
     'userposts': u.posts,
     'request': request,
     'numbers': [num for num in range(1,11)],
@@ -38,6 +44,7 @@ def test_a(request):
 def user2(request):
     print(str(request).split('/'))
     return render(request, 'user2.html', {'user': u2,
+    'user_list': user_list,
     'userposts': u2.posts,
     'request': request,
     'numbers': [num for num in range(1,11)],
@@ -57,6 +64,7 @@ def user2(request):
 def user3(request):
     print(str(request).split('/'))
     return render(request, 'user3.html', {'user': u3,
+    'user_list': user_list,
     'userposts': u3.posts,
     'request': request,
     'numbers': [num for num in range(1, 11)],
@@ -76,6 +84,7 @@ def user3(request):
 def user4(request):
     print(str(request).split('/'))
     return render(request, 'user4.html', {'user': u4,
+    'user_list': user_list,
     'userposts': u4.posts,
     'request': request,
     'numbers': [num for num in range(1, 11)],
@@ -95,6 +104,8 @@ def user4(request):
 def user5(request):
     print(str(request).split('/'))
     return render(request, 'user5.html', {'user': u4,
+    'user_list': user_list,
+
     'userposts': u4.posts,
     'request': request,
     'numbers': [num for num in range(1, 11)],
