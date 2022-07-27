@@ -39,12 +39,18 @@ u3 = User.objects.get(id=39)
 first_25 = Post.objects.all()[:25]
 first_25_ = None
 u3.posts = [post for post in posts if post.author == 'Voluptatem']
-
+u4 = User.objects.get(id=40)
+first_10 = Post.objects.all()[:10]
+u5 = User.objects.create(username="Modi")
+u5.save()
 user_list = []
 for name in set([post.author for post in posts]):
     _u = User.objects.create(username=name)
     user_list.append(_u)
     _u.save()
+
+rand_post = rand(posts)
+
 
 
 for post in first_25:

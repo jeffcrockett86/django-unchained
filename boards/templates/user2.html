@@ -47,14 +47,14 @@ ___________________________________________________________
 
 
     {% for post in userposts %}
-    <p onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{post.title}} by {{post.author}}</p>
-    <p onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{post.content}}</p>
+    <h3 style="color:white;" onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{post.title}} by {{post.author}}</h3>
+    <h5 style="color:white;" onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{post.content}}</h5>
     {% endfor %}
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <!-- <a class="navbar-brand" href="#">Navbar</a> -->
         {% for number in numbers %}
-        <a class="navbar-brand" href="user/" + {{number}}>{{number}}</a>
+        <a class="navbar-brand" href="{{number}}">{{number}}</a>
    
         {% endfor %}
 

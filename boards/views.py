@@ -9,7 +9,7 @@ import requests
 def index(request):
     post = rand(Post.objects.all())
     # return HttpResponse(f'<h1>{post.author} {post.time} {post.name} {post.content}</h1>')
-    return render(request, 'index.html', {'posts': first_25, 'numbers': [num for num in range(1, 11)]})
+    return render(request, 'index.html', {'posts': first_10, 'numbers': [num for num in range(1, 11)]})
 
 def user1(request):
     print(str(request).split('/'))
@@ -73,5 +73,135 @@ def user3(request):
 
     })
 
-def do_something(request):
-    return render(request, 'do_something.html', {})
+def user4(request):
+    print(str(request).split('/'))
+    return render(request, 'user4.html', {'user': u4,
+    'userposts': u4.posts,
+    'request': request,
+    'numbers': [num for num in range(1, 11)],
+    'colors': ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
+    'spacer': '''
+        
+    ___________________________________________________________
+
+
+    ''',
+    'kevin_bacon': requests.get('https://en.wikipedia.org').text,
+    'str_request': ' '.join(str(request).split('/')),
+    'split_str_request': str(request).split('/')
+
+    })
+
+def user5(request):
+    print(str(request).split('/'))
+    return render(request, 'user5.html', {'user': u4,
+    'userposts': u4.posts,
+    'request': request,
+    'numbers': [num for num in range(1, 11)],
+    'colors': ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
+    'spacer': '''
+        
+    ___________________________________________________________
+
+
+    ''',
+    'kevin_bacon': requests.get('https://en.wikipedia.org').text,
+    'str_request': ' '.join(str(request).split('/')),
+    'split_str_request': str(request).split('/')
+
+    })
+
+def user6(request):
+    print(str(request).split('/'))
+    return render(request, 'user6.html', {'user': u3,
+    'userposts': u4.posts,
+    'request': request,
+    'numbers': [num for num in range(1, 11)],
+    'colors': ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
+    'spacer': '''
+        
+    ___________________________________________________________
+
+
+    ''',
+    'kevin_bacon': requests.get('https://en.wikipedia.org').text,
+    'str_request': ' '.join(str(request).split('/')),
+    'split_str_request': str(request).split('/')
+
+    })
+
+def user7(request):
+    print(str(request).split('/'))
+    return render(request, 'user7.html', {'user': u3,
+    'userposts': u4.posts,
+    'request': request,
+    'numbers': [num for num in range(1, 11)],
+    'colors': ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
+    'spacer': '''
+        
+    ___________________________________________________________
+
+
+    ''',
+    'kevin_bacon': requests.get('https://en.wikipedia.org').text,
+    'str_request': ' '.join(str(request).split('/')),
+    'split_str_request': str(request).split('/')
+
+    })
+
+def user8(request):
+    print(str(request).split('/'))
+    return render(request, 'user8.html', {'user': u3,
+    'userposts': u4.posts,
+    'request': request,
+    'numbers': [num for num in range(1, 11)],
+    'colors': ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
+    'spacer': '''
+        
+    ___________________________________________________________
+
+
+    ''',
+    'kevin_bacon': requests.get('https://en.wikipedia.org').text,
+    'str_request': ' '.join(str(request).split('/')),
+    'split_str_request': str(request).split('/')
+
+    })
+
+def user9(request):
+    print(str(request).split('/'))
+    return render(request, 'user9.html', {'user': u3,
+    'userposts': u4.posts,
+    'request': request,
+    'numbers': [num for num in range(1, 11)],
+    'colors': ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
+    'spacer': '''
+        
+    ___________________________________________________________
+
+
+    ''',
+    'kevin_bacon': requests.get('https://en.wikipedia.org').text,
+    'str_request': ' '.join(str(request).split('/')),
+    'split_str_request': str(request).split('/')
+
+    })
+
+def user10(request):
+    print(str(request).split('/'))
+    return render(request, 'user10.html', {'user': u3,
+    'userposts': u4.posts,
+    'request': request,
+    'numbers': [num for num in range(1, 11)],
+    'colors': ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
+    'spacer': '''
+        
+    ___________________________________________________________
+
+
+    ''',
+    'kevin_bacon': requests.get('https://en.wikipedia.org').text,
+    'str_request': ' '.join(str(request).split('/')),
+    'split_str_request': str(request).split('/')
+
+    })
