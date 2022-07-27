@@ -11,10 +11,9 @@ def index(request):
     return render(request, 'index.html', {'posts': first_10, 
         'userlist': user_list[:10],
         'numbers': [num for num in range(1, 11)],
-        'comment_lists': [post.comments for post in Post.objects.all()][:10],
-        'items': dict_items,
-        'keys': [item[0] for item in dict_items],
-        'values': [item[1] for item in dict_items]})
+     
+    })
+   
 
 def user1(request):
     print(str(request).split('/'))
@@ -160,6 +159,9 @@ def user7(request):
 
     })
 
+def tree(request):
+    return render(request, 'tree.html', {'user_list': user_list})
+
 def user8(request):
     print(str(request).split('/'))
     return render(request, 'user8.html', {'user': u3,
@@ -216,3 +218,4 @@ def user10(request):
     'split_str_request': str(request).split('/')
 
     })
+

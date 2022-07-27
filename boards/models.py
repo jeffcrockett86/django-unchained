@@ -21,7 +21,7 @@ class User(models.Model):
     posts = []
 
 class Comment(models.Model):
-    # author = models.CharField(max_length=25, default="Anonymous")
+    author = None
     content = models.CharField(max_length=10000, default="Comment")
     parent = None 
     comments = []
@@ -45,18 +45,28 @@ for user in user_list:
     user.save() 
 
 for post in user.posts:
-    post.comments = [Comment(lorem.sentence(), parent = post) for i in range(5)]
+    post.comments = [Comment(lorem.sentence()) for i in range(5)]
 
 
 
+for user in user_list:
+    for post in user.posts:
+        c = Comment(content=lorem.sentence())
+        c.comments.append(Comment(content=lorem.sentence()))
+        c.comments[-1].parent = c
+        c.parent = post
+        post.comments.append(c)
+
+# for user in user_list:
+#     for post in user.posts:
+#         for comment in post.comments:
+#             comment.content = lorem.sentence()
+#             comment.save()
 
 
-
-
-
-z = zip(first_25, [post.comments for post in first_25])
-d = dict(z)
-dict_items = list(d.items())
+# z = zip(first_25, [post.comments for post in first_25])
+# d = dict(z)
+# dict_items = list(d.items())
 '''
  Anonymous 07/25/22(Mon)23:29:41 No.606992621   [Reply]▶>>607010219
 The first thing I will do when I get this will put my hand in the Goblet of Fire.

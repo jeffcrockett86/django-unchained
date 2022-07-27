@@ -14,5 +14,5 @@ path('page/7', views.user7, name="user7"),
 path('page/8', views.user8, name="user8"),
 path('page/9', views.user9, name="user9"),
 path('page/10', views.user10, name="user10"),
-
+path('tree/', views.tree, name="tree"),
 ]
