@@ -27,12 +27,13 @@ ___________________________________________________________
     <h1>{{numbers}}</h1>  -->
     <h1 style="color:chartreuse;">{{request}}</h1>
     <h2 style="color:turquoise">{{split_str_request}}</h2>
+    <h1>{{user.username}}</h1>
     <!-- <p style="color:white;">This person's username is {{user.username}}</p> -->
     <!-- <p>This person's posts are {{user.posts}}</p> -->
 
     <h1 style="color: aliceblue;text-align:center;background-color: black;">
-      {{user2.username}}
-      {% for post in user2.posts %}
+  
+      {% for post in user.posts %}
           <h3 style="color:aqua;">{{post.title}}</h3>
           <h6 style="color:chartreuse;">by {{post.author}}</h6>
           <h5 style="color:aliceblue;">{{post.content}}</h5>
@@ -45,13 +46,13 @@ ___________________________________________________________
 
     {% for color in colors %}
 
-    <h1>{{color}}</h1>
+    <h1 style="color:white;">{{color}}</h1>
     
     {% endfor %} -->
 
     {% for post in userposts %}
-    <p><span>{{post.title}}</span> by <span>{{post.author}}</span></p>
-    <p><span>{{post.content}}</span></p>
+    <p>{{post.title}} by {{post.author}}</p>
+    <p>{post.content}}</p>
     {% endfor %}
 
   
