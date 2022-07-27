@@ -26,10 +26,9 @@ ___________________________________________________________
 <body style="background-color: black;">
 <script>let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']</script>
 </head>
+<body>
     <!-- 
     <h1>{{numbers}}</h1>  -->
-    <h1 style="color:chartreuse;" onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{request}}</h1>
-    <h2 style="color:turquoise" onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{split_str_request}}</h2>
     <h1 style="color:aliceblue;text-align:center;" onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{user.username}}</h1>
     <!-- <p style="color:white;">This person's username is {{user.username}}</p> -->
     <!-- <p>This person's posts are {{user.posts}}</p> -->
@@ -47,16 +46,22 @@ ___________________________________________________________
         </h1>
 
 
-    {% for color in colors %}
-
-    <h1 style="color:white;">{{color}}</h1>
-    
-    {% endfor %} -->
-
     {% for post in userposts %}
-    <p>{{post.title}} by {{post.author}}</p>
-    <p>{post.content}}</p>
+    <p onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{post.title}} by {{post.author}}</p>
+    <p onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{post.content}}</p>
     {% endfor %}
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+        {% for number in numbers %}
+        <a class="navbar-brand" href="user/" + {{number}}>{{number}}</a>
+   
+        {% endfor %}
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
 
   
 </body>

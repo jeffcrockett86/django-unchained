@@ -9,14 +9,14 @@ import requests
 def index(request):
     post = rand(Post.objects.all())
     # return HttpResponse(f'<h1>{post.author} {post.time} {post.name} {post.content}</h1>')
-    return render(request, 'index.html', {'posts': first_25})
+    return render(request, 'index.html', {'posts': first_25, 'numbers': [num for num in range(1, 11)]})
 
 def user1(request):
     print(str(request).split('/'))
     return render(request, 'user1.html', {'user': u,
     'userposts': u.posts,
     'request': request,
-    'numbers': [num for num in range(100)],
+    'numbers': [num for num in range(1,11)],
     'colors': ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
     'spacer': '''
         
@@ -40,7 +40,7 @@ def user2(request):
     return render(request, 'user2.html', {'user': u2,
     'userposts': u2.posts,
     'request': request,
-    'numbers': [num for num in range(100)],
+    'numbers': [num for num in range(1,11)],
     'colors': ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
     'spacer': '''
         
@@ -59,7 +59,7 @@ def user3(request):
     return render(request, 'user3.html', {'user': u3,
     'userposts': u3.posts,
     'request': request,
-    'numbers': [num for num in range(100)],
+    'numbers': [num for num in range(1, 11)],
     'colors': ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
     'spacer': '''
         
@@ -73,3 +73,5 @@ def user3(request):
 
     })
 
+def do_something(request):
+    return render(request, 'do_something.html', {})

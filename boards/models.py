@@ -40,6 +40,13 @@ first_25 = Post.objects.all()[:25]
 first_25_ = None
 u3.posts = [post for post in posts if post.author == 'Voluptatem']
 
+user_list = []
+for name in set([post.author for post in posts]):
+    _u = User.objects.create(username=name)
+    user_list.append(_u)
+    _u.save()
+
+
 for post in first_25:
    c = Comment(content=lorem.text())
    c.parent = post

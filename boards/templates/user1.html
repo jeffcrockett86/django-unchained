@@ -4,10 +4,21 @@
   let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
 </script>
 <body style="background-color: black;">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+    <a class="navbar-brand" href="user/">First User</a>
+    <a class="navbar-brand" href="user/2">Second User</a>
+    <a class="navbar-brand" href="user/3">Third User</a>
+
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">This is some text in the span that's inside the button</span>
+    </button>
+</nav>
 <!-- 
     <h1>{{numbers}}</h1>  -->
-    <h1 style="color:chartreuse;">{{request}}</h1>
-    <h2 style="color:turquoise">{{split_str_request}}</h2>
+    <!-- <h1 style="color:chartreuse;">{{request}}</h1>
+    <h2 style="color:turquoise">{{split_str_request}}</h2> -->
     <!-- <p style="color:white;">This person's username is {{user.username}}</p> -->
     <!-- <p>This person's posts are {{user.posts}}</p> -->
     <p style="color:white;">
@@ -37,5 +48,15 @@
     </h2>
     <p>{{ story.tease|truncatewords:"100" }}</p>
     {% endfor %} -->
-  
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+      {% for number in numbers %}
+      <a class="navbar-brand" href="user/" + {{number}}>{{number}}</a>
+ 
+      {% endfor %}
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  </nav>
 </body>

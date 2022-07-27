@@ -6,7 +6,18 @@
 </head>
 
 <body style="background-color: black; color:white;">
-    <h1 style="color:rgb(192, 192, 220);text-align: center;" onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">REDCHAN</h1>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+        <a class="navbar-brand" href="user/">First User</a>
+        <a class="navbar-brand" href="user/2">Second User</a>
+        <a class="navbar-brand" href="user/3">Third User</a>
+
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon">This is some text in the span that's inside the button</span>
+        </button>
+    </nav>
+    <h1 style="color:rgb(192, 192, 220);text-align: center;padding:75px;" onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">REDCHAN</h1>
     <!-- <div class="sentence" style="color:green;">
         <div class="article-phrase" style="color:white; padding:50px;"">
             <div class="article" style="color:rgb(135, 135, 239);padding:25px;">
@@ -26,10 +37,10 @@
         </div>
         </div>
     </div> -->
-    <h2 onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{str_request}}</h2>
+    <!-- <h2 onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{str_request}}</h2> -->
 {% for post in posts %}
 <h3 onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{post.title}}</h3>
-<h4 onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{post.author}}</h4>
+<h4 onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">by {{post.author}}</h4>
 <h6 onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{post.content}}</h6>
 {% endfor %}
     <form style="text-align: center;margin-left:33%;margin-right:33%;">
@@ -64,6 +75,16 @@
     </div> -->
 
 <!-- {% endfor %} -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+    {% for number in numbers %}
+    <a class="navbar-brand" href="user/" + {{number}}>{{number}}</a>
 
+    {% endfor %}
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+</nav>
     </body>
 

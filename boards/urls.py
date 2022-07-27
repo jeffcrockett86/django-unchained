@@ -9,5 +9,5 @@ path('user/2', views.user2, name="user2"),
 path('user/3', views.user3, name="user3"),
 path('user/39', views.user3, name="user3"),
 path('test/', views.test_a, name="test_a"),
-
+path('#', views.do_something, name="do_something"),
 ]
