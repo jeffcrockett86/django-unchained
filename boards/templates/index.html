@@ -1,10 +1,12 @@
 {% load static %}
+<head>
 <link rel="stylesheet" type="text/css" href= "{% static 'boards/css/bootstrap.css' %}" />
 <link rel="script" href= "{% static 'boards/js/bootstrap.js' %}" />
-
+<script>let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];</script>
+</head>
 
 <body style="background-color: black; color:white;">
-    <h1 style="color:rgb(192, 192, 220);text-align: center;">REDCHAN</h1>
+    <h1 style="color:rgb(192, 192, 220);text-align: center;" onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">REDCHAN</h1>
     <!-- <div class="sentence" style="color:green;">
         <div class="article-phrase" style="color:white; padding:50px;"">
             <div class="article" style="color:rgb(135, 135, 239);padding:25px;">
@@ -24,11 +26,11 @@
         </div>
         </div>
     </div> -->
-    <h2>{{str_request}}</h2>
+    <h2 onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{str_request}}</h2>
 {% for post in posts %}
-<h3>{{post.title}}</h3>
-<h4>{{post.author}}</h4>
-<h6>{{post.content}}</h6>
+<h3 onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{post.title}}</h3>
+<h4 onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{post.author}}</h4>
+<h6 onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{post.content}}</h6>
 {% endfor %}
     <form style="text-align: center;margin-left:33%;margin-right:33%;">
         <div class="form-group justify-content-center">
@@ -42,24 +44,26 @@
       </form>
  
 >                 
-        {% for post in first_25 %}
-        <!-- <h1 class="badge badge-secondary">Author: {{post.author}}</h1> -->
-        <div style="text-align: center;"><
-        <h1 class="badge badge-primary" style="color:white;text-align: center;font-size:revert;">{{post.title}}</h1> <br><h3 class="badge badge-dark">by <a href="/boards/user">{{post.author}}<a></a></h3>
+        <!-- {% for post in first_25 %}
+        <h1 class="badge badge-secondary" onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">Author: {{post.author}}</h1> -->
+        <!-- <div style="text-align: center;"><
+        <h1 class="badge badge-primary" style="color:white;text-align: center;font-size:revert;"
+        onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{post.title}}</h1> <br><h3 class="badge badge-dark">by <div onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]"><a href="/boards/user">{{post.author}}<a></a><div></a></h3>
         <br>
 
-        <p class="text-wrap badge badge-secondary" style="color:aquamarine; background-color:black;text-align: center;font-size:revert;">{{post.content}}</p>
+        <p class="text-wrap badge badge-secondary" style="color:white; background-color:black;text-align: center;font-size:revert;"
+        onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{post.content}}</p>
         </div>
         <br><br>
         <div class="comments">
             {% for comment in post.comments %}
-                <h6>{{comment.author}}</h6>
-                <h4>{{comment.content}}</h4>
-            {% endfor %}
-        </div>
-    </div>
+                <h6 style="color:white;" onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{comment.author}}</h6>
+                <h4 style="color:white;" onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{comment.content}}</h4>
+            {% endfor %} --> -->
+        <!-- </div>
+    </div> -->
 
-{% endfor %}
+<!-- {% endfor %} -->
 
     </body>
 

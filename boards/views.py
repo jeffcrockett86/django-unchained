@@ -11,38 +11,34 @@ def index(request):
     # return HttpResponse(f'<h1>{post.author} {post.time} {post.name} {post.content}</h1>')
     return render(request, 'index.html', {'posts': first_25})
 
-def user(request):
-    _user = User.objects.get(id=37)
-    _user2 = User.objects.get(id=38)
-    http_response = HttpResponse('I"m the HTTP response!"') 
-    return render(request, 'user.html', {'user': _user,
-    'user2': _user2, 
-    'posttitles': [post.title for post in _user.posts],
-    'postauthors': [post.author for post in _user.posts],
-    'postcontents': [post.content for post in _user.posts],
+def user1(request):
+    print(str(request).split('/'))
+    return render(request, 'user1.html', {'user': u,
+    'userposts': u.posts,
     'request': request,
     'numbers': [num for num in range(100)],
     'colors': ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
-    'pictures': [],
-    'alphanum': ALPHANUM,
-    'numquam': u,
     'spacer': '''
-    
+        
     ___________________________________________________________
 
 
     ''',
-    'kevin_bacon': requests.get('https://en.wikipedia.org').text,
+    'wiki': requests.get('https://en.wikipedia.org').text,
     'str_request': ' '.join(str(request).split('/')),
     'split_str_request': str(request).split('/')
 
     })
 
+
+
 def test_a(request):
     return render(request, 'test.html', {'numbers': [1,2,3,4,5,6,7,8,9,10]})
 
 def user2(request):
-    return render(request, 'user2.html', {'user': u,
+    print(str(request).split('/'))
+    return render(request, 'user2.html', {'user': u2,
+    'userposts': u2.posts,
     'request': request,
     'numbers': [num for num in range(100)],
     'colors': ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],

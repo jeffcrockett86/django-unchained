@@ -21,22 +21,25 @@ ___________________________________________________________
 'split_str_request': str(request).split('/')
 
 } -->
+<head>
 <link rel="stylesheet" type="text/css" href= "{% static 'boards/css/bootstrap.css' %}" />
 <body style="background-color: black;">
-<!-- 
+<script>let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']</script>
+</head>
+    <!-- 
     <h1>{{numbers}}</h1>  -->
-    <h1 style="color:chartreuse;">{{request}}</h1>
-    <h2 style="color:turquoise">{{split_str_request}}</h2>
-    <h1 style="color:aliceblue;text-align:center;">{{user.username}}</h1>
+    <h1 style="color:chartreuse;" onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{request}}</h1>
+    <h2 style="color:turquoise" onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{split_str_request}}</h2>
+    <h1 style="color:aliceblue;text-align:center;" onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{user.username}}</h1>
     <!-- <p style="color:white;">This person's username is {{user.username}}</p> -->
     <!-- <p>This person's posts are {{user.posts}}</p> -->
 
     <h1 style="color: aliceblue;text-align:center;background-color: black;">
   
       {% for post in user.posts %}
-          <h3 style="color:aqua;">{{post.title}}</h3>
-          <h6 style="color:chartreuse;">by {{post.author}}</h6>
-          <h5 style="color:aliceblue;">{{post.content}}</h5>
+          <h3 style="color:aqua;" onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{post.title}}</h3>
+          <h6 style="color:chartreuse;" onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">by {{post.author}}</h6>
+          <h5 style="color:aliceblue;" onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{post.content}}</h5>
             {{spacer}}
             {% endfor %}
          
