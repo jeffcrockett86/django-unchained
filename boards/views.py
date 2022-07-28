@@ -8,7 +8,7 @@ import requests
 
 def index(request):
     # return HttpResponse(f'<h1>{post.author} {post.time} {post.name} {post.content}</h1>')
-    return render(request, 'index.html', {'posts': first_10, 
+    return render(request, 'index.html', {'posts': first_10_posts, 
         'userlist': user_list[:10],
         'user': user_list[0],
         'numbers': [num for num in range(1, 11)],
@@ -18,9 +18,8 @@ def index(request):
 
 def user1(request):
     print(str(request).split('/'))
-    return render(request, 'user1.html', {'user': u,
+    return render(request, 'user1.html', {'user': user_list[0],
     'user_list': user_list,
-    'userposts': u.posts,
     'request': request,
     'numbers': [num for num in range(1,11)],
     'colors': ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
@@ -38,14 +37,11 @@ def user1(request):
 
 
 
-def test_a(request):
-    return render(request, 'test.html', {'numbers': [1,2,3,4,5,6,7,8,9,10]})
 
 def user2(request):
     print(str(request).split('/'))
-    return render(request, 'user2.html', {'user': u2,
+    return render(request, 'user2.html', {'user': user_list[1],
     'user_list': user_list,
-    'userposts': u2.posts,
     'request': request,
     'numbers': [num for num in range(1,11)],
     'colors': ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
@@ -63,9 +59,8 @@ def user2(request):
 
 def user3(request):
     print(str(request).split('/'))
-    return render(request, 'user3.html', {'user': u3,
+    return render(request, 'user3.html', {'user': user_list[2],
     'user_list': user_list,
-    'userposts': u3.posts,
     'request': request,
     'numbers': [num for num in range(1, 11)],
     'colors': ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
@@ -83,9 +78,8 @@ def user3(request):
 
 def user4(request):
     print(str(request).split('/'))
-    return render(request, 'user4.html', {'user': u4,
+    return render(request, 'user4.html', {'user': user_list[3],
     'user_list': user_list,
-    'userposts': u4.posts,
     'request': request,
     'numbers': [num for num in range(1, 11)],
     'colors': ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
@@ -103,10 +97,8 @@ def user4(request):
 
 def user5(request):
     print(str(request).split('/'))
-    return render(request, 'user5.html', {'user': u4,
+    return render(request, 'user5.html', {'user': user_list[4],
     'user_list': user_list,
-
-    'userposts': u4.posts,
     'request': request,
     'numbers': [num for num in range(1, 11)],
     'colors': ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
@@ -124,8 +116,7 @@ def user5(request):
 
 def user6(request):
     print(str(request).split('/'))
-    return render(request, 'user6.html', {'user': u3,
-    'userposts': u4.posts,
+    return render(request, 'user6.html', {'user': user_list[5],
     'request': request,
     'numbers': [num for num in range(1, 11)],
     'colors': ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
@@ -143,8 +134,7 @@ def user6(request):
 
 def user7(request):
     print(str(request).split('/'))
-    return render(request, 'user7.html', {'user': u3,
-    'userposts': u4.posts,
+    return render(request, 'user7.html', {'user': user_list[6],
     'request': request,
     'numbers': [num for num in range(1, 11)],
     'colors': ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
@@ -165,8 +155,7 @@ def tree(request):
 
 def user8(request):
     print(str(request).split('/'))
-    return render(request, 'user8.html', {'user': u3,
-    'userposts': u4.posts,
+    return render(request, 'user8.html', {'user': user_list[7],
     'request': request,
     'numbers': [num for num in range(1, 11)],
     'colors': ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
@@ -184,8 +173,7 @@ def user8(request):
 
 def user9(request):
     print(str(request).split('/'))
-    return render(request, 'user9.html', {'user': u3,
-    'userposts': u4.posts,
+    return render(request, 'user9.html', {'user': user_list[8],
     'request': request,
     'numbers': [num for num in range(1, 11)],
     'colors': ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
@@ -203,8 +191,7 @@ def user9(request):
 
 def user10(request):
     print(str(request).split('/'))
-    return render(request, 'user10.html', {'user': u3,
-    'userposts': u4.posts,
+    return render(request, 'user10.html', {'user': user_list[9],
     'request': request,
     'numbers': [num for num in range(1, 11)],
     'colors': ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
@@ -293,5 +280,32 @@ def twenty_three(request):
 def twenty_four(request):
     return render(request, 'tree.html', {'user': user_list[23]})
 
-def reddit(request):
-    return render(request, 'reddit.html', {'user_list': user_list, 'thread': thread})
+def page1(request):
+    return render(request, 'index.html', {'posts': Post.objects.all()[:10]})
+
+def page2(request):
+    return render(request, 'index.html', {'posts' : Post.objects.all()[10:20]})
+
+def page3(request):
+    return render(request, 'index.html', {'posts' : Post.objects.all()[20:30]})
+
+def page4(request):
+    return render(request, 'index.html', {'posts' : Post.objects.all()[30:40]})
+
+def page5(request):
+    return render(request, 'index.html', {'posts' : Post.objects.all()[40:50]})
+
+def page6(request):
+    return render(request, 'index.html', {'posts' : Post.objects.all()[50:60]})
+
+def page7(request):
+    return render(request, 'index.html', {'posts' : Post.objects.all()[60:70]})
+
+def page8(request):
+    return render(request, 'index.html', {'posts' : Post.objects.all()[70:80]})
+
+def page9(request):
+    return render(request, 'index.html', {'posts' : Post.objects.all()[80:90]})
+
+def page10(request):
+    return render(request, 'index.html', {'posts' : Post.objects.all()[90:100]})

@@ -18,17 +18,17 @@
 </head>
 
 <body style="background-color: black; color:white;">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
         <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-        <a class="navbar-brand" href="user/">First User</a>
-        <a class="navbar-brand" href="user/2">Second User</a>
-        <a class="navbar-brand" href="user/3">Third User</a>
+        <!-- <a class="navbar-brand" href="user/">First User</a> -->
+        <!-- <a class="navbar-brand" href="user/2">Second User</a> -->
+        <!-- <a class="navbar-brand" href="user/3">Third User</a> -->
 
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon">This is some text in the span that's inside the button</span>
-        </button>
-    </nav>
+        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> -->
+          <!-- <span class="navbar-toggler-icon">This is some text in the span that's inside the button</span> -->
+        <!-- </button> -->
+    <!-- </nav> -->
     <h1 style="color:rgb(192, 192, 220);text-align: center;padding:75px;" onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">REDCHAN</h1>
 
     {% for post in posts %} 
@@ -94,7 +94,7 @@
             {% for comment in post.comments %}
                 <h6 style="color:white;" onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{comment.author}}</h6>
                 <h4 style="color:white;" onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">{{comment.content}}</h4>
-            {% endfor %} --> -->
+            {% endfor %} --> 
         <!-- </div>
     </div> -->
 
