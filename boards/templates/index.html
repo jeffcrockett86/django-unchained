@@ -1,8 +1,20 @@
 {% load static %}
 <head>
 <link rel="stylesheet" type="text/css" href= "{% static 'boards/css/bootstrap.css' %}" />
-<link rel="script" href= "{% static 'boards/js/bootstrap.js' %}" />
+<link rel="script" text="javascript" href= "{% static 'boards/js/bootstrap.js' %}" />
+<link rel="script" text="javascript" href= "{% static 'boards/js/popper.js' %}" />
+
 <script>let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+let counter = 0;
+document.getElementsByClassName('hide').onclick = function changeStyle(element) {
+    counter++
+    if(counter % 1 === 0) {
+        element.style.color = 'green';
+    } else {
+        element.style.color = 'red';
+    }
+    
+}
 // let count = 0;
 // function toggleVisibility(item) {
 //     count++ 
@@ -18,6 +30,17 @@
 </head>
 
 <body style="background-color: black; color:white;">
+    <!-- Example single danger button -->
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown button
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </div>
     <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
         <!-- <a class="navbar-brand" href="#">Navbar</a> -->
         <!-- <a class="navbar-brand" href="user/">First User</a> -->
@@ -30,18 +53,31 @@
         <!-- </button> -->
     <!-- </nav> -->
     <h1 style="color:rgb(192, 192, 220);text-align: center;padding:75px;" onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">REDCHAN</h1>
-
+    <h1>{{url}}</h1>
     {% for post in posts %} 
-    <h3 style="color:aqua">{{post.title}}</h3>
-    <h4 style="color:burlywood">by {{post.author}}</h4>
+    <h3 style="color:aqua" class="hide">{{post.title}}</h3>
+    <h4 style="color:burlywood">by <a href="/user/{{post.author}}">{{post.author}}</h4>
     <h5 style="color:aliceblue">{{post.content}}</h5>
-    <div class="comments" style="color:darkgoldenrod;">
-    <span>Comments</span>
-    {% for comment in post.comments %}
-    <h6>{{comment.content}}</h6>
-    {% endfor %}
+    
+    <div class="hide" onclick="console.log(this)">Hide Comments
+        <div class="comments" style="color:darkgoldenrod;">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Expand comments
+                </button>
+                <div onclick="counter++; this.innerHTML += counter % 2 === 0 ? {{html}} : ''" this.innerHTML +=''" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                {% for comment in post.comments %}
+                  <a class="dropdown-item" href="#">{{comment.content}}</a>
+                  {% endfor %}
+                </div>
+                
+              </div>
+      
+      
     {% endfor %}
     </div>
+</div>
     <!-- <div class="sentence" style="color:green;">
         <div class="article-phrase" style="color:white; padding:50px;"">
             <div class="article" style="color:rgb(135, 135, 239);padding:25px;">
@@ -99,10 +135,10 @@
     </div> -->
 
 <!-- {% endfor %} -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="display:flow-root;">
     <!-- <a class="navbar-brand" href="#">Navbar</a> -->
     {% for number in numbers %}
-    <a class="navbar-brand" href="page/{{number}}">{{number}}</a>
+    <a class="navbar-brand" href="{{number}}">{{number}}</a>
 
     {% endfor %}
 

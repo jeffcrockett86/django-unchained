@@ -101,7 +101,10 @@ for post in first_10_posts:
     post.content = lorem.paragraph()
     post.save()
 
-for post in Post.objects.all()[:200]:
+posts = Post.objects.all()[:200]
+for post in posts:
+    post.author = rand(list(set(user.username for user in user_list)))
+    post.author = User(username = post.author)
     post.title = lorem.sentence()
     post.content = lorem.paragraph()
     post.comments = [Comment(content=lorem.sentence()) for i in range(5)]

@@ -15,6 +15,10 @@ def index(request):
      
     })
    
+def user(request):
+    print(str(request).split('/'))
+    posts = [post for post in Post.objects.all() if post.author == str(request).split('/')[-2]]
+    return render(request, 'user.html', {'posts': posts})
 
 def user1(request):
     print(str(request).split('/'))
@@ -281,31 +285,81 @@ def twenty_four(request):
     return render(request, 'tree.html', {'user': user_list[23]})
 
 def page1(request):
-    return render(request, 'index.html', {'posts': Post.objects.all()[:10]})
+    url = str(request).split('/')
+
+    return render(request, 'index.html', {'posts': Post.objects.all()[:10],
+    'html': f'''
+      
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a href="1/" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+
+    ''',
+    'numbers': [1,2,3,4,5,6,7,8,9,10],
+    'url': url
+    
+    })
 
 def page2(request):
-    return render(request, 'index.html', {'posts' : Post.objects.all()[10:20]})
+    url = str(request).split('/')
+
+    return render(request, 'index.html', {'posts' : Post.objects.all()[10:20],
+        'numbers': [1,2,3,4,5,6,7,8,9,10],
+})
 
 def page3(request):
-    return render(request, 'index.html', {'posts' : Post.objects.all()[20:30]})
+    url = str(request).split('/')
+
+    return render(request, 'index.html', {'posts' : Post.objects.all()[20:30],
+        'numbers': [1,2,3,4,5,6,7,8,9,10],
+})
 
 def page4(request):
-    return render(request, 'index.html', {'posts' : Post.objects.all()[30:40]})
+    url = str(request).split('/')
+
+    return render(request, 'index.html', {'posts' : Post.objects.all()[30:40],
+        'numbers': [1,2,3,4,5,6,7,8,9,10],
+})
 
 def page5(request):
-    return render(request, 'index.html', {'posts' : Post.objects.all()[40:50]})
+    url = str(request).split('/')
+
+    return render(request, 'index.html', {'posts' : Post.objects.all()[40:50],
+        'numbers': [1,2,3,4,5,6,7,8,9,10],
+})
 
 def page6(request):
-    return render(request, 'index.html', {'posts' : Post.objects.all()[50:60]})
+    url = str(request).split('/')
+
+    return render(request, 'index.html', {'posts' : Post.objects.all()[50:60],
+        'numbers': [1,2,3,4,5,6,7,8,9,10],
+})
 
 def page7(request):
-    return render(request, 'index.html', {'posts' : Post.objects.all()[60:70]})
+    return render(request, 'index.html', {'posts' : Post.objects.all()[60:70],
+        'numbers': [1,2,3,4,5,6,7,8,9,10],
+})
 
 def page8(request):
-    return render(request, 'index.html', {'posts' : Post.objects.all()[70:80]})
+    url = str(request).split('/')
+
+    return render(request, 'index.html', {'posts' : Post.objects.all()[70:80],
+        'numbers': [1,2,3,4,5,6,7,8,9,10],
+})
 
 def page9(request):
-    return render(request, 'index.html', {'posts' : Post.objects.all()[80:90]})
+    url = str(request).split('/')
+    return render(request, 'index.html', {'posts' : Post.objects.all()[80:90],
+        'numbers': [1,2,3,4,5,6,7,8,9,10],
+})
 
 def page10(request):
-    return render(request, 'index.html', {'posts' : Post.objects.all()[90:100]})
+    url = str(request).split('/')
+    return render(request, 'index.html', {'posts' : Post.objects.all()[90:100],
+        'numbers': [1,2,3,4,5,6,7,8,9,10],
+    })
