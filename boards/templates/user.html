@@ -3,13 +3,13 @@
 <script>
   let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
 </script>
-<body>
+<body style="background-color: black;">
 
 {% for post in posts %}
 
-<h1>{{post.title}}</h1>
-<h2>{{post.author}}</h2>
-<h3>{{post.content}}</h3>
+<h1 style="color:green;">{{post.title}}</h1>
+<h2 style="color:yellow;">{{post.author}}</h2>
+<h3 style="color:aquamarine">{{post.content}}</h3>
 
 {% endfor %}
 

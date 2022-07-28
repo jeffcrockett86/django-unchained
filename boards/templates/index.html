@@ -54,12 +54,13 @@ document.getElementsByClassName('hide').onclick = function changeStyle(element) 
     <!-- </nav> -->
     <h1 style="color:rgb(192, 192, 220);text-align: center;padding:75px;" onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">REDCHAN</h1>
     <h1>{{url}}</h1>
+    <div>
     {% for post in posts %} 
     <h3 style="color:aqua" class="hide">{{post.title}}</h3>
     <h4 style="color:burlywood">by <a href="boards/user/{{post.author}}">{{post.author}}</h4>
     <h5 style="color:aliceblue">{{post.content}}</h5>
     
-    <div class="hide" onclick="console.log(this)">Hide Comments
+    <!-- <div class="hide" onclick="console.log(this)">Hide Comments
         <div class="comments" style="color:darkgoldenrod;">
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -72,10 +73,11 @@ document.getElementsByClassName('hide').onclick = function changeStyle(element) 
                   {% endfor %}
                 </div>
                 
-              </div>
+              </div> -->
       
       
     {% endfor %}
+    </div>
     </div>
 </div>
     <!-- <div class="sentence" style="color:green;">
@@ -135,16 +137,16 @@ document.getElementsByClassName('hide').onclick = function changeStyle(element) 
     </div> -->
 
 <!-- {% endfor %} -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="display:flow-root;">
-    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-    {% for number in numbers %}
-    <a class="navbar-brand" href="{{number}}">{{number}}</a>
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light" style="display:flow-root;">
+ <a class="navbar-brand" href="#">Navbar</a> -->
+    <!-- {% for number in numbers %} -->
+    <!-- <a class="navbar-brand" href="{{number}}">{{number}}</a> -->
 
-    {% endfor %}
+    <!-- {% endfor %} -->
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-</nav>
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> -->
+      <!-- <span class="navbar-toggler-icon"></span> -->
+    <!-- </button> -->
+<!-- </nav> --> -->
     </body>
 
