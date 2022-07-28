@@ -39,5 +39,5 @@ path('21/', views.twenty_one, name="ten"),
 path('22/', views.twenty_two, name="ten"),
 path('23/', views.twenty_three, name="ten"),
 path('24/', views.twenty_four, name="ten"),
-
+path('reddit/', views.reddit, name="reddit"),
 ]

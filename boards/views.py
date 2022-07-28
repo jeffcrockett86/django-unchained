@@ -292,3 +292,6 @@ def twenty_three(request):
 
 def twenty_four(request):
     return render(request, 'tree.html', {'user': user_list[23]})
+
+def reddit(request):
+    return render(request, 'reddit.html', {'user_list': user_list, 'thread': thread})
