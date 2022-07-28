@@ -56,7 +56,7 @@ document.getElementsByClassName('hide').onclick = function changeStyle(element) 
     <h1>{{url}}</h1>
     {% for post in posts %} 
     <h3 style="color:aqua" class="hide">{{post.title}}</h3>
-    <h4 style="color:burlywood">by <a href="/user/{{post.author}}">{{post.author}}</h4>
+    <h4 style="color:burlywood">by <a href="boards/user/{{post.author}}">{{post.author}}</h4>
     <h5 style="color:aliceblue">{{post.content}}</h5>
     
     <div class="hide" onclick="console.log(this)">Hide Comments
