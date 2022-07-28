@@ -43,3 +43,4 @@ path('9/', views.page9, name="page9"),
 path('10/', views.page10, name="page10"),
 
 ] + [path(f'boards/user/{user.username}/', views.user, name=f"{user.username}") for user in user_list]
+# + [path(f"boards/user/{user.username}/" + '_'.join(post.title.split()), views.load_post, name="post") for user in user_list for post in user.posts]

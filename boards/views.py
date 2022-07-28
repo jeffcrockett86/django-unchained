@@ -8,7 +8,8 @@ import requests
 
 def index(request):
     # return HttpResponse(f'<h1>{post.author} {post.time} {post.name} {post.content}</h1>')
-    return render(request, 'index.html', {'posts': first_10_posts, 
+    return render(request, 'index.html', {'posts': first_10_posts,
+        'front_page': Post.objects.all()[:100],
         'userlist': user_list[:10],
         'user': user_list[0],
         'numbers': [num for num in range(1, 11)],
@@ -18,7 +19,10 @@ def index(request):
 def user(request):
     print(str(request).split('/'))
     posts = [post for post in Post.objects.all() if post.author == str(request).split('/')[-2]]
-    return render(request, 'user.html', {'posts': posts})
+    return render(request, 'user.html', {'posts': posts, 'url': str(request).split(' GET ')[-1][1:-2]})
+
+def load_post(request):
+    return render(request, 'post.html', {'test': [1,2,3,4,5]})
 
 def user1(request):
     print(str(request).split('/'))

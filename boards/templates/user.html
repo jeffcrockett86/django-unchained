@@ -7,9 +7,9 @@
 
 {% for post in posts %}
 
-<h1 style="color:green;">{{post.title}}</h1>
-<h2 style="color:yellow;">{{post.author}}</h2>
-<h3 style="color:aquamarine">{{post.content}}</h3>
+<h1 style="color:white;"><a href="/{{url}}">{{post.title}}</a></h1>
+<h2 style="color:yellow;"><a href="/{{url}}">{{post.author}}</a></h2>
+<h3 style="color:aquamarine"><a href="/{{url}}">{{post.content}}</a></h1>
 
 {% endfor %}
 
