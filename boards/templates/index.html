@@ -23,7 +23,9 @@ document.getElementsByClassName('hide').onclick = function changeStyle(element) 
     <h1 style="color:rgb(192, 192, 220);text-align: center;padding:75px;" onclick="this.style.color = colors[Math.floor(Math.random() * colors.length)]">REDCHAN</h1>
     <h1>{{url}}</h1>
     <div>
+        {% load static %} <img src="{% static "boards/images/2.jpg" %}">
     {% for post in front_page %} 
+
     <h3 style="color:aqua" class="hide">{{post.title}}</h3>
     <h4 style="color:burlywood">by <a href="boards/user/{{post.author}}">{{post.author}}</h4>
     <h5 style="color:aliceblue">{{post.content}}</h5> 
